@@ -1,0 +1,1255 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Наследие — Строительство домов из газобетона «под ключ» в Москве и МО
+    </title>
+    <meta
+      name="description"
+      content="Архитектурно-строительная мастерская «Наследие». Проектируем и строим дома из газобетона под ключ в Москве и МО. Ипотека, эскроу, рассрочка под 0%."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css?v=63" />
+  </head>
+  <body>
+    <!-- ===================== ШАПКА ===================== -->
+    <header class="header">
+      <button class="burger" aria-label="Меню">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path
+            d="M3 9h18M3 15h11"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+      <a href="index.html" class="logo"
+        ><img
+          src="img/ui/logo.svg"
+          alt="Наследие — архитектурно-строительная мастерская"
+      /></a>
+      <nav class="nav">
+        <a href="#projects" class="nav__link"
+          >Проекты
+          <svg class="nav__caret" viewBox="0 0 10 6" fill="none">
+            <path
+              d="M1 1l4 4 4-4"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </a>
+        <a href="#trust" class="nav__link">О компании</a>
+        <a href="#examples" class="nav__link">Примеры работ</a>
+        <a href="#footer" class="nav__link">Контакты</a>
+      </nav>
+      <div class="header__right">
+        <div class="socials">
+          <a href="#" class="social" aria-label="ВКонтакте"
+            ><img src="img/icons/vk.svg" alt="VK"
+          /></a>
+          <a href="#" class="social" aria-label="MAX"
+            ><img src="img/icons/max.svg" alt="MAX"
+          /></a>
+        </div>
+        <a href="tel:+74952560054" class="header__phone">+7 (495) 256-00-54</a>
+        <button class="btn-outline" data-modal-open>
+          Скачать каталог в PDF<img src="img/icons/download.svg" alt="" />
+        </button>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- ===================== ГЛАВНЫЙ ЭКРАН ===================== -->
+      <section class="hero">
+        <div class="hero__image">
+          <img
+            src="img/projects/kalipso.jpg"
+            alt="Дом из газобетона под ключ"
+          />
+        </div>
+        <div class="hero__card">
+          <span class="tag"
+            ><img src="img/icons/home.svg" alt="" />Индивидуальный подход</span
+          >
+          <h1 class="hero__title">
+            Строительство домов из&nbsp;газобетона «под&nbsp;ключ» в&nbsp;Москве
+            и&nbsp;МО
+          </h1>
+          <p class="hero__subtitle">
+            Планируете строительство дома? Получите расчёт стоимости всего за 1
+            минуту
+          </p>
+          <button class="btn-primary hero__cta" data-modal-open>
+            Обсудить проект
+            <span class="btn-circle"
+              ><img src="img/ui/arrow.svg" alt=""
+            /></span>
+          </button>
+          <div class="hero__mini">
+            <div class="mini-card">
+              <span class="dots-pair"
+                ><span class="dim"></span><span class="solid"></span
+              ></span>
+              <p class="mini-card__text">
+                <span class="light">Строим будущее:</span><br /><span
+                  class="strong"
+                  >надёжно и качественно</span
+                >
+              </p>
+            </div>
+            <div class="mini-card">
+              <span class="dots-pair"
+                ><span class="dim"></span><span class="solid"></span
+              ></span>
+              <p class="mini-card__text">
+                <span class="light">Современные</span><br /><span class="strong"
+                  >технологии производства</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ВЫБОР ДИЗАЙНА ДОМА ===================== -->
+      <section class="section card attach-bottom" id="projects">
+        <div class="picker__head">
+          <h2 class="section-title">
+            Выбери дизайн дома и рассчитай <br /><span class="muted"
+              >цену прямо на сайте:</span
+            >
+          </h2>
+          <div class="picker__stats">
+            <div class="stat">
+              <span class="ic-circle"
+                ><img src="img/icons/layer.svg" alt=""
+              /></span>
+              <span
+                ><span class="stat__value">Более 100 000 м²</span
+                ><span class="stat__label">построенного жилья</span></span
+              >
+            </div>
+            <div class="stat">
+              <span class="ic-circle"
+                ><img src="img/icons/flash.svg" alt=""
+              /></span>
+              <span
+                ><span class="stat__value">Сдаем объекты на 30%</span
+                ><span class="stat__label">быстрее конкурентов</span></span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab is-active" data-filter="all">Все</button>
+          <button class="tab" data-filter="floors-1">Одноэтажные</button>
+          <button class="tab" data-filter="floors-2">Двухэтажные</button>
+          <button class="tab" data-filter="терраса">С террасой</button>
+          <button class="tab" data-filter="гараж">С гаражом</button>
+          <button class="tab" data-filter="узкий участок">Для узкого участка</button>
+        </div>
+
+        <div class="picker__search">
+          <label class="search-field">
+            <img src="img/ui/search.svg" alt="" />
+            <input type="text" placeholder="Поиск по названию проекта..." />
+          </label>
+          <button class="filter-btn">
+            <span class="filter-btn__label">Фильтры</span
+            ><img src="img/ui/filter.svg" alt="" />
+          </button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Карточки строятся автоматически из массива HOUSES (js/houses-data.js).
+               Чтобы добавить/убрать дом — редактируйте этот массив, HTML менять не нужно. -->
+        </div>
+
+        <div class="more-row">
+          <button class="btn-more" id="moreBtn">
+            Показать ещё<img src="img/icons/more.svg" alt="" />
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================== КОНСУЛЬТАЦИЯ / ИПОТЕКА ===================== -->
+      <section class="consult attach-top">
+        <img class="consult__deco" src="img/ui/deco-percent.png" alt="" />
+        <div class="consult__left">
+          <span class="tag tag--dark"
+            ><img src="img/icons/message.svg" alt="" />Консультация</span
+          >
+          <h2 class="consult__title">Работаем с ипотекой и&nbsp;эскроу</h2>
+          <p class="consult__text">
+            Мы аккредитованы в крупных банках — ДОМ.РФ, Сбер, ВТБ, Альфа-Банк. С
+            нашей помощью можно получить ипотеку как на строительство частного
+            дома, так и на покупку готовых домов — по любой льготной программе и
+            через эскроу-счета.
+          </p>
+        </div>
+        <div class="consult__right">
+          <p class="consult__form-title">
+            Давайте запишем вас<br />на бесплатную консультацию
+          </p>
+          <form data-lead-form class="form-stack">
+            <input
+              class="form-field"
+              type="text"
+              placeholder="Ваше имя"
+              required
+            />
+            <input
+              class="form-field"
+              type="tel"
+              placeholder="+7 (999) 999-99-99"
+              required
+            />
+            <select class="form-field">
+              <option>Какую ипотеку рассматриваете?</option>
+              <option>Семейная ипотека</option>
+              <option>IT-ипотека</option>
+              <option>Льготная / господдержка</option>
+              <option>Стандартная</option>
+            </select>
+            <div class="form-foot">
+              <button type="submit" class="btn-submit">
+                Отправить<span class="btn-circle"
+                  ><img src="img/ui/arrow.svg" alt=""
+                /></span>
+              </button>
+              <p class="policy">
+                Нажимая кнопку, вы соглашаетесь на
+                <a href="#">обработку персональных данных</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ===================== ПОЧЕМУ НАМ ДОВЕРЯЮТ ===================== -->
+      <section class="section trust" id="trust">
+        <div class="card trust__list">
+          <h2 class="section-title">
+            Почему нам доверяют<br />строительство дома
+          </h2>
+          <div class="trust-item">
+            <span class="plus-mark"></span>
+            <div>
+              <h4 class="trust-item__title">Прозрачная смета</h4>
+              <p class="trust-item__text">
+                Считаем стоимость до старта работ и фиксируем этапы.
+              </p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="plus-mark"></span>
+            <div>
+              <h4 class="trust-item__title">Технический контроль</h4>
+              <p class="trust-item__text">
+                Следим за качеством узлов, материалов и соблюдением технологий.
+              </p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="plus-mark"></span>
+            <div>
+              <h4 class="trust-item__title">Одна команда на весь проект</h4>
+              <p class="trust-item__text">
+                От архитектуры и конструктора до стройки и сдачи дома.
+              </p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="plus-mark"></span>
+            <div>
+              <h4 class="trust-item__title">Фото- и видеоотчеты</h4>
+              <p class="trust-item__text">
+                Вы видите, что происходит на объекте на каждом этапе.
+              </p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="plus-mark"></span>
+            <div>
+              <h4 class="trust-item__title">Гарантия в договоре</h4>
+              <p class="trust-item__text">
+                Соблюдаем официальные обязательства по договору.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="trust__media">
+          <img src="img/projects/solnechnogorsk.png" alt="Объект компании" />
+          <span class="trust__pill"
+            ><span class="pic"><img src="img/icons/users.svg" alt="" /></span
+            ><span class="trust__pill-text"
+              >Более 150 партнёров<br /><span class="trust__pill-light"
+                >– поставщиков</span
+              ></span
+            ></span
+          >
+        </div>
+      </section>
+
+      <!-- ===================== НАШИ УСЛУГИ ===================== -->
+      <section class="section card">
+        <div class="block-head">
+          <h2 class="section-title">Наши услуги</h2>
+          <span class="tag"
+            ><img src="img/icons/stat-built.svg" alt="" />Что мы делаем</span
+          >
+        </div>
+        <div class="services">
+          <a href="#" class="service-card" data-modal-open
+            data-modal-title="Архитектурное проектирование"
+            ><img
+              src="img/sections/plan.jpg"
+              alt="Архитектурное проектирование" />
+            <div class="service-card__body">
+              <h3 class="service-card__title">
+                Архитектурное<br />проектирование
+              </h3>
+            </div>
+            <span class="service-card__arrow"
+              ><img src="img/ui/arrow-ur.svg" alt="" /></span
+          ></a>
+          <a href="#" class="service-card" data-modal-open
+            data-modal-title="Дизайн интерьеров"
+            ><img
+              src="img/sections/interior-living.jpg"
+              alt="Дизайн интерьеров" />
+            <div class="service-card__body">
+              <h3 class="service-card__title">Дизайн<br />интерьеров</h3>
+            </div>
+            <span class="service-card__arrow"
+              ><img src="img/ui/arrow-ur.svg" alt="" /></span
+          ></a>
+          <a href="#" class="service-card" data-modal-open
+            data-modal-title="Коммерческие проекты"
+            ><img
+              src="img/sections/interior-wood.jpg"
+              alt="Коммерческие проекты" />
+            <div class="service-card__body">
+              <h3 class="service-card__title">Коммерческие<br />проекты</h3>
+            </div>
+            <span class="service-card__arrow"
+              ><img src="img/ui/arrow-ur.svg" alt="" /></span
+          ></a>
+        </div>
+      </section>
+
+      <!-- ===================== ПОЧЕМУ ГАЗОБЕТОН ===================== -->
+      <section class="section card">
+        <div class="why-head">
+          <h2 class="section-title">
+            Почему газобетон —<br /><span class="muted"
+              >лучший выбор для дома</span
+            >
+          </h2>
+          <div class="why-note">
+            <span class="ic-circle"
+              ><img src="img/icons/layer.svg" alt=""
+            /></span>
+            <p class="why-note__text">
+              Газобетон сочетает
+              <b
+                >энергоэффективность, точную геометрию и высокую скорость
+                строительства.</b
+              >
+              При соблюдении технологии вы получаете теплый, надежный и
+              долговечный дом.
+            </p>
+          </div>
+        </div>
+        <div class="why-grid">
+          <div class="feature-card">
+            <img src="img/sections/aerated-concrete-1.jpg" alt="" /><span
+              class="dots-row"
+              ><span class="on"></span
+            ></span>
+            <div class="feature-card__body">
+              <h4 class="feature-card__title">Тепло зимой и комфорт летом</h4>
+              <p class="feature-card__text">
+                Материал хорошо сохраняет тепло и помогает снизить затраты на
+                отопление.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <img src="img/sections/aerated-concrete-2.jpg" alt="" /><span
+              class="dots-row"
+              ><span></span><span class="on"></span
+            ></span>
+            <div class="feature-card__body">
+              <h4 class="feature-card__title">Точная геометрия блоков</h4>
+              <p class="feature-card__text">
+                Кладка получается ровной, а стены — аккуратными и предсказуемыми
+                по качеству.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <img src="img/sections/aerated-concrete-3.jpg" alt="" /><span
+              class="dots-row"
+              ><span></span><span></span><span class="on"></span
+            ></span>
+            <div class="feature-card__body">
+              <h4 class="feature-card__title">
+                Высокая скорость строительства
+              </h4>
+              <p class="feature-card__text">
+                Большой формат блоков ускоряет возведение коробки дома.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <img src="img/sections/aerated-concrete-4.jpg" alt="" /><span
+              class="dots-row"
+              ><span></span><span></span><span></span><span class="on"></span
+            ></span>
+            <div class="feature-card__body">
+              <h4 class="feature-card__title">Пожаробезопасность</h4>
+              <p class="feature-card__text">
+                Негорючий материал для надежного каменного дома.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <img src="img/sections/aerated-concrete-5.jpg" alt="" /><span
+              class="dots-row"
+              ><span></span><span></span><span></span><span></span
+              ><span class="on"></span
+            ></span>
+            <div class="feature-card__body">
+              <h4 class="feature-card__title">
+                Подходит для любой архитектуры
+              </h4>
+              <p class="feature-card__text">
+                Большие окна, простые формы, одно- и двухэтажные дома, плоские и
+                скатные кровли.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ПРИМЕРЫ ГОТОВЫХ ДОМОВ ===================== -->
+      <section class="section card" id="examples">
+        <div class="examples-head">
+          <div>
+            <h2 class="section-title">Примеры готовых домов</h2>
+            <p class="examples-head__lead">
+              Показываем не только визуализации и проекты, но и реальные дома,
+              которые уже построены или находятся на финальных этапах работ.
+            </p>
+          </div>
+          <div class="examples-stats">
+            <div class="examples-stat">
+              <span class="ic-circle"
+                ><img src="img/icons/layer.svg" alt="" /></span
+              ><span
+                ><span class="examples-stat__value">150+</span
+                ><span class="examples-stat__label"
+                  >реализованных<br />объектов</span
+                ></span
+              >
+            </div>
+            <div class="examples-stat">
+              <span class="ic-circle"
+                ><img src="img/icons/flash.svg" alt="" /></span
+              ><span
+                ><span class="examples-stat__value">10+ лет</span
+                ><span class="examples-stat__label"
+                  >в малоэтажном<br />строительстве</span
+                ></span
+              >
+            </div>
+            <div class="examples-stat">
+              <span class="ic-circle"
+                ><img src="img/icons/flash.svg" alt="" /></span
+              ><span
+                ><span class="examples-stat__value">4,8 / 5</span
+                ><span class="examples-stat__label"
+                  >средняя оценка<br />клиентов</span
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="examples-grid">
+          <div class="example-card">
+            <img src="img/projects/mansion.jpg" alt="Дом «Янино»" />
+            <div class="example-card__chips">
+              <span class="chip"
+                ><span class="dot" style="background: var(--gold)"></span>118
+                м²</span
+              ><span class="chip"
+                ><span class="dot" style="background: var(--cyan)"></span>3
+                спальни</span
+              ><span class="chip"
+                ><span class="dot" style="background: var(--orange)"></span>2
+                санузла</span
+              >
+            </div>
+            <h3 class="example-card__name">Янино</h3>
+          </div>
+          <div class="example-card">
+            <img src="img/projects/sloboda.jpg" alt="Дом «Солнечное»" />
+            <div class="example-card__chips">
+              <span class="chip"
+                ><span class="dot" style="background: var(--gold)"></span>118
+                м²</span
+              ><span class="chip"
+                ><span class="dot" style="background: var(--cyan)"></span>3
+                спальни</span
+              ><span class="chip"
+                ><span class="dot" style="background: var(--orange)"></span>2
+                санузла</span
+              >
+            </div>
+            <h3 class="example-card__name">Солнечное</h3>
+          </div>
+          <div class="example-card">
+            <img src="img/projects/astro.jpg" alt="Дом «Юкковское»" />
+            <div class="example-card__chips">
+              <span class="chip"
+                ><span class="dot" style="background: var(--gold)"></span>118
+                м²</span
+              ><span class="chip"
+                ><span class="dot" style="background: var(--cyan)"></span>3
+                спальни</span
+              ><span class="chip"
+                ><span class="dot" style="background: var(--orange)"></span>2
+                санузла</span
+              >
+            </div>
+            <h3 class="example-card__name">Юкковское</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ИНДИВИДУАЛЬНОЕ ПРОЕКТИРОВАНИЕ ===================== -->
+      <section class="section individual">
+        <div class="individual__card">
+          <h2 class="section-title">
+            Индивидуальное проектирование<br /><span class="muted"
+              >и адаптация готовых проектов</span
+            >
+          </h2>
+          <p class="individual__lead">
+            <b
+              >Если вам нравится идея готового проекта, но нужно изменить
+              планировку, фасад, посадку дома или состав помещений</b
+            >
+            — мы адаптируем решение под ваш участок и образ жизни. Если нужен
+            полностью уникальный дом — разработаем проект с нуля.
+          </p>
+          <ul class="plus-list">
+            <li>
+              <span class="plus-list__icon">+</span>Учитываем геологию и рельеф
+              участка
+            </li>
+            <li>
+              <span class="plus-list__icon">+</span>Продумываем посадку дома по
+              сторонам света
+            </li>
+            <li>
+              <span class="plus-list__icon">+</span>Адаптируем планировку под
+              состав семьи
+            </li>
+            <li>
+              <span class="plus-list__icon">+</span>Закладываем инженерные
+              решения заранее
+            </li>
+            <li>
+              <span class="plus-list__icon">+</span>Учитываем бюджет еще на
+              стадии концепции
+            </li>
+          </ul>
+          <button class="btn-primary btn-primary--sm" data-modal-open>
+            Обсудить ваш новый дом
+            <span class="btn-circle"
+              ><img src="img/ui/arrow.svg" alt=""
+            /></span>
+          </button>
+        </div>
+        <div class="individual__media">
+          <img src="img/projects/trust.png" alt="Индивидуальный проект дома" />
+        </div>
+      </section>
+
+      <!-- ===================== ЭТАПЫ СТРОИТЕЛЬСТВА ===================== -->
+      <section class="section card">
+        <div class="block-head">
+          <h2 class="section-title">
+            Как будет проходить строительство вашего дома
+          </h2>
+          <div class="reels__nav">
+            <button class="nav-arrow" data-steps-prev aria-label="Назад">
+              <img src="img/ui/chevron-left.svg" alt="" />
+            </button>
+            <button class="nav-arrow" data-steps-next aria-label="Вперёд">
+              <img src="img/ui/chevron-right.svg" alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="steps-slider">
+          <div class="steps-grid" id="stepsTrack">
+            <div class="step-card">
+              <span class="dots-row dots-row--dark"
+                ><span class="on"></span></span
+              ><span class="step-card__icon"
+                ><img src="img/steps/step-1.png" alt=""
+              /></span>
+              <h4 class="step-card__title">Знакомство и бриф</h4>
+              <p class="step-card__text">
+                Обсуждаем задачи, бюджет, сроки и пожелания по дому.
+              </p>
+            </div>
+            <div class="step-card">
+              <span class="dots-row dots-row--dark"
+                ><span></span><span class="on"></span></span
+              ><span class="step-card__icon"
+                ><img src="img/steps/step-2.png" alt=""
+              /></span>
+              <h4 class="step-card__title">Анализ участка</h4>
+              <p class="step-card__text">
+                Изучаем геологию, рельеф, посадку дома и ограничения участка.
+              </p>
+            </div>
+            <div class="step-card">
+              <span class="dots-row dots-row--dark"
+                ><span></span><span></span><span class="on"></span></span
+              ><span class="step-card__icon"
+                ><img src="img/steps/step-3.png" alt=""
+              /></span>
+              <h4 class="step-card__title">Проект и смета</h4>
+              <p class="step-card__text">
+                Готовим архитектурный проект и фиксируем смету в договоре.
+              </p>
+            </div>
+            <div class="step-card">
+              <span class="dots-row dots-row--dark"
+                ><span></span><span></span><span></span
+                ><span class="on"></span></span
+              ><span class="step-card__icon"
+                ><img src="img/steps/step-4.png" alt=""
+              /></span>
+              <h4 class="step-card__title">Договор и график</h4>
+              <p class="step-card__text">
+                Фиксируем этапы, сроки, стоимость и состав работ.
+              </p>
+            </div>
+            <div class="step-card">
+              <span class="dots-row dots-row--dark"
+                ><span></span><span></span><span></span><span></span
+                ><span class="on"></span></span
+              ><span class="step-card__icon"
+                ><img src="img/steps/step-5.png" alt=""
+              /></span>
+              <h4 class="step-card__title">Строительство и контроль</h4>
+              <p class="step-card__text">
+                Ведем работы по технологии, даем регулярные отчеты по объекту.
+              </p>
+            </div>
+            <div class="step-card">
+              <span class="dots-row dots-row--dark"
+                ><span></span><span></span><span></span><span></span
+                ><span></span><span class="on"></span></span
+              ><span class="step-card__icon"
+                ><img src="img/steps/step-6.png" alt=""
+              /></span>
+              <h4 class="step-card__title">Сдача дома</h4>
+              <p class="step-card__text">
+                Передаем готовый результат и сопровождаем по гарантийным
+                вопросам
+              </p>
+            </div>
+            <div class="step-card step-card--cta">
+              <span class="dots-row dots-row--dark"
+                ><span></span><span></span><span></span><span></span
+                ><span></span><span></span><span class="on"></span></span
+              ><span class="step-card__icon step-card__icon--cta"
+                ><img src="img/steps/cta-call.png" alt=""
+              /></span>
+              <div class="step-card__cta-body">
+                <h4 class="step-card__title">
+                  Оставьте заявку на бесплатный звонок
+                </h4>
+                <p class="step-card__text">
+                  Наш специалист подробно расскажет об этапах строительства и
+                  ответит на все вопросы
+                </p>
+                <button class="step-card__cta-btn" data-modal-open>
+                  Оставить заявку
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ОСНОВАТЕЛЬ ===================== -->
+      <section class="section founder">
+        <img class="founder__bg" src="img/sections/office.jpg" alt="" />
+        <div class="founder__content">
+          <span class="founder__role"
+            >Собственник и основатель<br />«Наследие»</span
+          >
+          <h2 class="founder__name">Александр</h2>
+          <p class="founder__text">
+            Мы, Строительная Мастерская «Наследие», уже 15 лет
+            воплощаем мечты о надежном жилье из газобетона и кирпича. Нас
+            рекомендуют, потому что мы объединяем грамотное, техничное
+            строительство с по-настоящему теплыми, человеческими отношениями.
+          </p>
+          <p class="founder__text" style="margin-top: 14px">
+            Строительство дома — это волнительно, поэтому наша задача — взять
+            вас за руку и провести через этот путь комфортно и спокойно. С нами
+            вы почувствуете себя единственным и важным: мы предлагаем камерный
+            подход, индивидуальные решения для каждого случая и абсолютный
+            комфорт на каждом шагу.
+          </p>
+          <p class="founder__blog">
+            Для вас делюсь опытом в&nbsp;блоге о&nbsp;стройке просто
+          </p>
+          <a href="#" class="btn-light"
+            >Перейти в блог<span class="ar"
+              ><img src="img/ui/arrow.svg" alt="" /></span
+          ></a>
+        </div>
+        <div class="founder__photo">
+          <img
+            src="img/people/founder.png"
+            alt="Александр — основатель компании «Наследие»"
+          />
+        </div>
+      </section>
+
+      <!-- ===================== ГЛАВНОЕ О ПОДХОДЕ ===================== -->
+      <section class="section approach">
+        <div class="approach__media">
+          <img src="img/sections/approach.png" alt="Дом, построенный «Наследие»" />
+          <div class="approach__stats">
+            <div class="approach__stat">
+              <span class="approach__stat-title">География</span>
+              <span class="approach__stat-text">Москва, Санкт-Петербург</span>
+            </div>
+            <div class="approach__stat">
+              <span class="approach__stat-title">С 2022 года</span>
+              <span class="approach__stat-text">строим для вас более 5ти лет</span>
+            </div>
+            <div class="approach__stat">
+              <span class="approach__stat-title">Удобство</span>
+              <span class="approach__stat-text">предоставляем полный спектр услуг</span>
+            </div>
+          </div>
+        </div>
+        <div class="approach__body">
+          <h2 class="section-title approach__title">Главное о подходе</h2>
+          <ul class="approach__list">
+            <li class="approach-item">
+              <span class="approach-item__bullet"></span>
+              <div>
+                <h4 class="approach-item__title">Внимание к каждому проекту</h4>
+                <p class="approach-item__text">
+                  Максимальная вовлеченность и высокий уровень сервиса независимо
+                  от вашего бюджета
+                </p>
+              </div>
+            </li>
+            <li class="approach-item">
+              <span class="approach-item__bullet"></span>
+              <div>
+                <h4 class="approach-item__title">Официальные расчеты</h4>
+                <p class="approach-item__text">
+                  Все платежи проходят строго через расчетный счет банка. 100%
+                  прозрачность
+                </p>
+              </div>
+            </li>
+            <li class="approach-item">
+              <span class="approach-item__bullet"></span>
+              <div>
+                <h4 class="approach-item__title">Удобная оплата</h4>
+                <p class="approach-item__text">
+                  Персональный график платежей. Доступны рассрочка, ипотека и
+                  наличный расчет
+                </p>
+              </div>
+            </li>
+            <li class="approach-item">
+              <span class="approach-item__bullet"></span>
+              <div>
+                <h4 class="approach-item__title">Команда экспертов</h4>
+                <p class="approach-item__text">
+                  За вашим проектом закреплены личные специалисты: менеджер,
+                  архитектор, инженер и прораб
+                </p>
+              </div>
+            </li>
+            <li class="approach-item">
+              <span class="approach-item__bullet"></span>
+              <div>
+                <h4 class="approach-item__title">Онлайн-контроль</h4>
+                <p class="approach-item__text">
+                  Отслеживайте все этапы строительства в реальном времени через
+                  личный кабинет
+                </p>
+              </div>
+            </li>
+            <li class="approach-item">
+              <span class="approach-item__bullet"></span>
+              <div>
+                <h4 class="approach-item__title">Гарантия 5 лет</h4>
+                <p class="approach-item__text">
+                  Официальные обязательства фиксируются юридически прямо в
+                  договоре
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===================== ПОЧЕМУ ВЫБИРАЮТ НАС ===================== -->
+      <section class="section card">
+        <h2 class="section-title advantages-title" style="margin-bottom: 8px">
+          Почему выбирают нас
+        </h2>
+        <div class="advantages-grid">
+          <div class="advantages-track">
+            <div class="adv-card">
+              <img
+                class="adv-card__wm"
+                src="img/icons/wm-clipboard.svg?v=2"
+                alt=""
+              />
+              <span class="adv-card__icon"
+                ><img src="img/icons/file.svg" alt=""
+              /></span>
+              <h4 class="adv-card__title">Проект бесплатно</h4>
+              <p class="adv-card__text">
+                При заключении договора индивидуальный архитектурный проект — в
+                подарок. Получите полную документацию, 3D-визуализацию и смету
+                без дополнительной платы и сэкономьте до 150 000 рублей
+              </p>
+            </div>
+            <div class="adv-card">
+              <img class="adv-card__wm" src="img/icons/wm-truck.svg?v=2" alt="" />
+              <span class="adv-card__icon"
+                ><img src="img/icons/truck.svg" alt=""
+              /></span>
+              <h4 class="adv-card__title">Выезд специалиста</h4>
+              <p class="adv-card__text">
+                Бесплатный инженерный выезд: оценка участка, замеры и
+                консультация специалистов. Мы также выполняем геологические
+                изыскания и анализ грунта, обеспечивая надежность основания
+                вашего будущего жилья
+              </p>
+            </div>
+            <div class="adv-card">
+              <img
+                class="adv-card__wm"
+                src="img/icons/wm-legal.svg?v=2"
+                alt=""
+              />
+              <span class="adv-card__icon"
+                ><img src="img/icons/legal-assistance.svg" alt=""
+              /></span>
+              <h4 class="adv-card__title">Юридическая помощь</h4>
+              <p class="adv-card__text">
+                Обеспечим полное юридическое сопровождение сделки и постановку
+                готового дома на кадастровый учет. Мы берем на себя всю
+                бюрократию, гарантируя вам быстрое получение ключей без лишних
+                хлопот
+              </p>
+            </div>
+            <div class="adv-card is-active">
+              <img class="adv-card__wm" src="img/icons/wm-house.svg?v=2" alt="" />
+              <span class="adv-card__icon"
+                ><img src="img/icons/living-area.svg" alt=""
+              /></span>
+              <h4 class="adv-card__title">Строительство в ипотеку</h4>
+              <p class="adv-card__text">
+                Помогаем получить ипотеку на строительство дома по любой льготной
+                программе и через эскроу-счета. Наша команда полностью
+                сопровождает сделку: от сбора документов до подписания договора.
+                Профессионально, выгодно и со 100% юридической безопасностью.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ВОПРОСЫ ===================== -->
+      <section class="section faq">
+        <div class="faq__aside">
+          <h2 class="faq__title">Часто задаваемые вопросы</h2>
+          <div class="faq__ask">
+            <p class="faq__ask-title">У вас остались вопросы?</p>
+            <p class="faq__ask-text">
+              Не нашли необходимую информацию? Оставьте контакт, и мы оперативно
+              ответим на ваш запрос.
+            </p>
+            <button class="btn-submit" data-modal-open>
+              Оставить контакт<span class="btn-circle"
+                ><img src="img/ui/arrow.svg" alt=""
+              /></span>
+            </button>
+          </div>
+        </div>
+        <div class="faq__list">
+          <div class="faq-item">
+            <button class="faq-item__q">
+              Сколько стоит построить дом из газобетона?<span
+                class="faq-item__sign"
+                >+</span
+              >
+            </button>
+            <div class="faq-item__a">
+              <div class="faq-item__a-inner">
+                Стоимость зависит от площади, этажности и комплектации. После
+                расчёта мы фиксируем смету в договоре, чтобы цена не менялась в
+                процессе стройки.
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__q">
+              Как формируется стоимость на дом?<span class="faq-item__sign"
+                >+</span
+              >
+            </button>
+            <div class="faq-item__a">
+              <div class="faq-item__a-inner">
+                Цена складывается из проектных работ, фундамента, коробки,
+                кровли, инженерных систем и организационных расходов. Все
+                позиции прозрачно прописаны в смете.
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__q">
+              Какие есть способы оплаты?<span class="faq-item__sign">+</span>
+            </button>
+            <div class="faq-item__a">
+              <div class="faq-item__a-inner">
+                Доступны ипотека, рассрочка под 0%, эскроу-счета и поэтапная
+                оплата по факту выполнения работ.
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__q">
+              Можно ли изменить типовой проект?<span class="faq-item__sign"
+                >+</span
+              >
+            </button>
+            <div class="faq-item__a">
+              <div class="faq-item__a-inner">
+                Да, мы адаптируем планировку, фасад и состав помещений под ваш
+                участок и образ жизни, либо разрабатываем проект с нуля.
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__q">
+              Как происходит контроль за стройкой на расстоянии?<span
+                class="faq-item__sign"
+                >+</span
+              >
+            </button>
+            <div class="faq-item__a">
+              <div class="faq-item__a-inner">
+                Вы получаете регулярные фото- и видеоотчёты по каждому этапу
+                работ, а также прямую связь с прорабом и менеджером проекта.
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__q">
+              Возможно ли строительство в зимнее время?<span
+                class="faq-item__sign"
+                >+</span
+              >
+            </button>
+            <div class="faq-item__a">
+              <div class="faq-item__a-inner">
+                Да, ряд работ ведётся круглый год с соблюдением технологий,
+                рассчитанных на низкие температуры.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== СТРОЙКА БЕЗ ФИЛЬТРОВ ===================== -->
+      <section class="section card reels">
+        <div class="reels__head">
+          <h2 class="section-title reels__title">
+            Стройка без фильтров: как мы работаем на самом деле
+          </h2>
+          <div class="reels__nav">
+            <button class="nav-arrow" data-reels-prev aria-label="Назад">
+              <img src="img/ui/chevron-left.svg" alt="" />
+            </button>
+            <button class="nav-arrow" data-reels-next aria-label="Вперёд">
+              <img src="img/ui/chevron-right.svg" alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="reels-slider">
+          <div class="reels-track" id="reelsTrack">
+            <div class="reel">
+              <video src="video/reel-1.mp4" poster="video/reel-1.jpg" preload="none" playsinline loop></video>
+              <span class="reel__play"><img src="img/ui/play.png" alt="" /></span>
+            </div>
+            <div class="reel">
+              <video src="video/reel-2.mp4" poster="video/reel-2.jpg" preload="none" playsinline loop></video>
+              <span class="reel__play"><img src="img/ui/play.png" alt="" /></span>
+            </div>
+            <div class="reel">
+              <video src="video/reel-3.mp4" poster="video/reel-3.jpg" preload="none" playsinline loop></video>
+              <span class="reel__play"><img src="img/ui/play.png" alt="" /></span>
+            </div>
+            <div class="reel">
+              <video src="video/reel-4.mp4" poster="video/reel-4.jpg" preload="none" playsinline loop></video>
+              <span class="reel__play"><img src="img/ui/play.png" alt="" /></span>
+            </div>
+            <div class="reel">
+              <video src="video/reel-5.mp4" poster="video/reel-5.jpg" preload="none" playsinline loop></video>
+              <span class="reel__play"><img src="img/ui/play.png" alt="" /></span>
+            </div>
+            <div class="reel">
+              <video src="video/reel-6.mp4" poster="video/reel-6.jpg" preload="none" playsinline loop></video>
+              <span class="reel__play"><img src="img/ui/play.png" alt="" /></span>
+            </div>
+            <div class="reel">
+              <video src="video/reel-7.mp4?v=2" poster="video/reel-7.jpg?v=2" preload="none" playsinline loop></video>
+              <span class="reel__play"><img src="img/ui/play.png" alt="" /></span>
+            </div>
+            <div class="reel">
+              <video src="video/reel-8.mp4" poster="video/reel-8.jpg" preload="none" playsinline loop></video>
+              <span class="reel__play"><img src="img/ui/play.png" alt="" /></span>
+            </div>
+            <div class="reel">
+              <video src="video/reel-9.mp4" poster="video/reel-9.jpg" preload="none" playsinline loop></video>
+              <span class="reel__play"><img src="img/ui/play.png" alt="" /></span>
+            </div>
+            <div class="reel">
+              <video src="video/reel-10.mp4" poster="video/reel-10.jpg" preload="none" playsinline loop></video>
+              <span class="reel__play"><img src="img/ui/play.png" alt="" /></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ФИНАЛЬНАЯ КОНСУЛЬТАЦИЯ ===================== -->
+      <section
+        class="section consult consult--blue"
+        style="margin-bottom: 36px"
+      >
+        <img
+          class="consult__deco consult__deco--corner"
+          src="img/ui/polygon.png"
+          alt=""
+        />
+        <div class="consult__left">
+          <span class="tag tag--dark"
+            ><img src="img/icons/message.svg" alt="" />Консультация</span
+          >
+          <h2 class="consult__title">
+            Получите каталог проектов<br />и&nbsp;предварительный<br />расчет
+            стоимости
+          </h2>
+        </div>
+        <div class="consult__right">
+          <p class="consult__text" style="margin-top: 0; margin-bottom: 24px">
+            Ответим на все вопросы и поможем подобрать решение под состав семьи,
+            образ жизни, участок и бюджет.
+          </p>
+          <form data-lead-form>
+            <div class="form-row">
+              <input
+                class="form-field"
+                type="text"
+                placeholder="Ваше имя"
+                required
+              />
+              <input
+                class="form-field"
+                type="tel"
+                placeholder="+7 (999) 999-99-99"
+                required
+              />
+            </div>
+            <textarea
+              class="form-field"
+              placeholder="Комментарий"
+              style="margin-bottom: 18px"
+            ></textarea>
+            <div class="form-foot">
+              <button type="submit" class="btn-submit">
+                Отправить<span class="btn-circle"
+                  ><img src="img/ui/arrow.svg" alt=""
+                /></span>
+              </button>
+              <p class="policy">
+                Нажимая кнопку, вы соглашаетесь на
+                <a href="#">обработку персональных данных</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <!-- /.container -->
+
+    <!-- ===================== ПОДВАЛ ===================== -->
+    <footer class="footer" id="footer">
+      <div class="container" style="padding: 0">
+        <div class="footer__top">
+          <div class="footer__col">
+            <p class="footer__col-title">Застройщик:</p>
+            <p class="footer__addr">
+              ИП Тонни Александр Владимирович<br />ИНН 780627188270<br /><br />Санкт-Петербург,
+              наб. Обводного канала, 21, офис 1-49
+            </p>
+          </div>
+          <div class="footer__col">
+            <p class="footer__col-title">Наши объекты</p>
+            <div class="footer__links">
+              <a href="#projects">Поиск по фильтру</a
+              ><a href="#projects">Типовые проекты</a
+              ><a href="#projects">Индивидуальные проекты</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <p class="footer__col-title">Способы покупки</p>
+            <div class="footer__links">
+              <a href="#">Ипотека</a><a href="#">Рассрочка</a
+              ><a href="#">Trade-in</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <p class="footer__col-title">Компания</p>
+            <div class="footer__links">
+              <a href="#">О нас</a><a href="#footer">Контакты</a
+              ><a href="#projects">Популярные проекты</a
+              ><a href="#">Клубные поселки</a><a href="#">Наши услуги</a
+              ><a href="#">Схема работы</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__bottom-left">
+            <a href="index.html" class="footer__logo"
+              ><img src="img/ui/logo.svg" alt="Наследие"
+            /></a>
+            <p class="footer__copy">
+              2025 © Строительная Мастерская «Наследие»
+            </p>
+          </div>
+          <div class="footer__bottom-mid">
+            <div class="footer__legal">
+              <a href="#">Политика обработки персональных данных</a
+              ><a href="#">Третьи лица</a>
+            </div>
+            <p class="footer__disclaimer">
+              Любая информация, представленная на данном сайте, носит
+              исключительно информационный характер и ни при каких условиях не
+              является публичной офертой, определяемой положениями статьи 437 ГК
+              РФ.
+            </p>
+          </div>
+          <div class="footer__bottom-right">
+            <div class="footer__socials">
+              <a href="#" class="social" aria-label="ВКонтакте"
+                ><img src="img/icons/vk.svg" alt="VK"
+              /></a>
+              <a href="#" class="social" aria-label="MAX"
+                ><img src="img/icons/max.svg" alt="MAX"
+              /></a>
+            </div>
+            <div class="footer__contacts-bottom">
+              <div class="footer__contact">
+                <span>Сот</span><a href="tel:+74952560054">+7 495 256 00 54</a>
+              </div>
+              <div class="footer__contact">
+                <span>Мск</span><a href="tel:+78127483992">+7 812 748 39 98</a>
+              </div>
+              <div class="footer__contact">
+                <span>Спб</span><a href="tel:+79197696730">+7 919 769 67 30</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===================== ПЛАВАЮЩАЯ КНОПКА ОПРОСА ===================== -->
+    <a class="quiz-fab" href="quiz.html" aria-label="Пройти опрос">
+      <span class="quiz-fab__icon">
+        <img src="img/icons/survey.svg" alt="Иконка опроса" />
+      </span>
+      <span class="quiz-fab__body">
+        <span class="quiz-fab__label">Опрос</span>
+        <span class="quiz-fab__title">Расчёт стоимости</span>
+        <span class="quiz-fab__title">6 вопросов</span>
+      </span>
+    </a>
+
+    <!-- ===================== МОДАЛЬНОЕ ОКНО ===================== -->
+    <div class="modal">
+      <div class="modal__box">
+        <button class="modal__close" data-modal-close aria-label="Закрыть">
+          &times;
+        </button>
+        <h3 class="modal__title">Заказать звонок</h3>
+        <form data-lead-form>
+          <input
+            class="form-field"
+            type="text"
+            placeholder="Ваше имя"
+            required
+          />
+          <input
+            class="form-field"
+            type="tel"
+            placeholder="+7 (999) 999-99-99"
+            required
+          />
+          <button
+            type="submit"
+            class="btn-submit"
+            style="width: 100%; margin-top: 8px"
+          >
+            Отправить<span class="btn-circle"
+              ><img src="img/ui/arrow.svg" alt=""
+            /></span>
+          </button>
+          <label class="form-consent" style="margin-top: 14px">
+            <input type="checkbox" checked required />Нажимая кнопку, вы соглашаетесь 
+на
+            <a href="#">обработку персональных данных</a>
+          </label>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/houses-data.js?v=7"></script>
+    <script src="js/main.js?v=14"></script>
+  </body>
+</html>

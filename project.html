@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калипсо — проект дома из газобетона | Наследие</title>
+    <meta
+      name="description"
+      content="Проект дома «Калипсо» из газобетона: 219.28 м², 2 этажа, 4 комнаты. Стоимость строительства от 10 500 000 ₽. Комплектация, характеристики, видео-визитка."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css?v=58" />
+    <link rel="stylesheet" href="css/project.css?v=23" />
+  </head>
+  <body>
+    <!-- ===================== ШАПКА ===================== -->
+    <header class="header">
+      <button class="burger" aria-label="Меню">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path
+            d="M3 9h18M3 15h11"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+      <a href="index.html" class="logo"
+        ><img
+          src="img/ui/logo.svg"
+          alt="Наследие — архитектурно-строительная мастерская"
+      /></a>
+      <nav class="nav">
+        <a href="index.html#projects" class="nav__link"
+          >Проекты
+          <svg class="nav__caret" viewBox="0 0 10 6" fill="none">
+            <path
+              d="M1 1l4 4 4-4"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </a>
+        <a href="index.html#trust" class="nav__link">О компании</a>
+        <a href="index.html#examples" class="nav__link">Примеры работ</a>
+        <a href="index.html#footer" class="nav__link">Контакты</a>
+      </nav>
+      <div class="header__right">
+        <div class="socials">
+          <a href="#" class="social" aria-label="ВКонтакте"
+            ><img src="img/icons/vk.svg" alt="VK"
+          /></a>
+          <a href="#" class="social" aria-label="MAX"
+            ><img src="img/icons/max.svg" alt="MAX"
+          /></a>
+        </div>
+        <a href="tel:+74952560054" class="header__phone">+7 (495) 256-00-54</a>
+        <a id="presentationBtn" class="btn-outline" href="#" download style="display:none">
+          Скачать презентацию<img src="img/icons/download.svg" alt="" />
+        </a>
+      </div>
+    </header>
+
+    <div class="container">
+      <a href="index.html#projects" class="back-link">
+        <img src="img/ui/arrow-end.svg" alt="" />
+        Назад
+      </a>
+      <!-- ===================== ГАЛЕРЕЯ + КАРТОЧКА ПОКУПКИ ===================== -->
+      <section class="project-top">
+        <div class="gallery">
+          <div class="gallery__main">
+            <img src="img/projects/mesto.jpg" alt="Проект дома «Калипсо»" />
+            <button class="gallery__nav gallery__nav--prev" aria-label="Назад">
+              <svg viewBox="0 0 22 22" fill="none">
+                <path
+                  d="M14 5l-6 6 6 6"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button class="gallery__nav gallery__nav--next" aria-label="Вперёд">
+              <svg viewBox="0 0 22 22" fill="none">
+                <path
+                  d="M8 5l6 6-6 6"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="gallery__thumbs-wrap">
+            <div class="gallery__thumbs">
+              <div class="gallery__thumb is-active">
+                <img src="img/projects/mesto.jpg" alt="Вид 1" />
+              </div>
+              <div class="gallery__thumb">
+                <img src="img/projects/kalipso.jpg" alt="Вид 2" />
+              </div>
+              <div class="gallery__thumb">
+                <img src="img/projects/istra.jpg" alt="Вид 3" />
+              </div>
+              <div class="gallery__thumb">
+                <img src="img/projects/solnechnogorsk.jpg" alt="Вид 4" />
+              </div>
+              <div class="gallery__thumb">
+                <img src="img/projects/sloboda.jpg" alt="Вид 5" />
+              </div>
+              <div class="gallery__thumb">
+                <img src="img/projects/mansion.jpg" alt="Вид 6" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buy-card">
+          <p class="buy-card__label">Стоимость строительства</p>
+          <div class="buy-card__head">
+            <div class="buy-card__title">
+              <h1 class="buy-card__name">Калипсо</h1>
+              <span class="buy-card__type">ХАЙТЕК</span>
+            </div>
+            <span class="buy-card__price">от 10 500 000 ₽</span>
+          </div>
+          <div class="buy-card__actions">
+            <button
+              class="btn-primary"
+              data-modal-open
+              data-modal-title="Заказать звонок"
+              data-modal-text=""
+              data-modal-nocomment
+            >
+              Заказать звонок<span class="btn-circle">
+                <img src="img/ui/arrow.svg" alt="" />
+              </span>
+            </button>
+            <button
+              class="btn-present"
+              id="presentBtn"
+              data-modal-open
+              data-modal-title="Оставьте заявку"
+            >
+              Презентация
+              <span class="btn-circle"
+                ><img src="img/icons/file.svg" alt=""
+              /></span>
+            </button>
+          </div>
+          <p class="buy-card__hint">
+            Оставьте номер и с вами свяжутся для подробной презентации проекта
+          </p>
+          <form data-lead-form>
+            <input
+              class="form-field"
+              type="text"
+              placeholder="Ваше имя"
+              required
+            />
+            <input
+              class="form-field"
+              type="tel"
+              placeholder="+7 (999) 999-99-99"
+              required
+            />
+            <button type="submit" class="btn-submit">
+              Получить консультацию<span class="btn-circle"
+                ><img src="img/ui/arrow.svg" alt=""
+              /></span>
+            </button>
+            <label class="buy-card__consent"
+              ><input type="checkbox" checked />Я соглашаюсь на
+              <a href="#">обработку персональных данных</a></label
+            >
+          </form>
+          <div class="buy-card__row">
+            <a href="#" class="buy-card__tg">
+              <span>Telegram</span>
+              <img src="img/icons/telegram.svg" alt="" />
+            </a>
+            <span class="buy-card__id">ID объекта: 74</span>
+          </div>
+          <div class="buy-card__installment">
+            Предложение о рассрочке<span class="pct">0%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ХАРАКТЕРИСТИКИ ПРОЕКТА ===================== -->
+      <section class="section">
+        <div class="specs__head">
+          <h2 class="section-title">Характеристики проекта</h2>
+          <span class="specs__map-badge">Хайтек</span>
+        </div>
+        <div class="specs-grid">
+          <div class="spec-card">
+            <span class="spec-card__icon"
+              ><img src="img/icons/meta-area-white.svg" alt="" /></span
+            ><span class="spec-card__label">Общая площадь</span
+            ><span class="spec-card__value">219.28 м²</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-card__icon"
+              ><img src="img/icons/living-area.svg" alt="" /></span
+            ><span class="spec-card__label">Жилая площадь</span
+            ><span class="spec-card__value">134.27 м²</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-card__icon"
+              ><img src="img/icons/layers.svg" alt="" /></span
+            ><span class="spec-card__label">Этажей</span
+            ><span class="spec-card__value">2</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-card__icon"
+              ><img src="img/icons/meta-bed-white.svg" alt="" /></span
+            ><span class="spec-card__label">Комнат</span
+            ><span class="spec-card__value">4</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-card__icon"
+              ><img src="img/icons/meta-bath-white.svg" alt="" /></span
+            ><span class="spec-card__label">Санузлов</span
+            ><span class="spec-card__value">2</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-card__icon"
+              ><img src="img/icons/dimensions-white.svg" alt="" /></span
+            ><span class="spec-card__label">Габариты</span
+            ><span class="spec-card__value">10×15</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-card__icon"
+              ><img src="img/icons/garage.svg" alt="" /></span
+            ><span class="spec-card__label">Гараж</span
+            ><span class="spec-card__value">Нет</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== КОМПЛЕКТАЦИЯ ===================== -->
+      <section class="section complectation">
+        <h2 class="complectation__title">Комплектация</h2>
+        <div class="complectation__cols">
+          <div class="complectation__col">
+            <h3 class="complectation__col-title">Холодный контур</h3>
+            <div class="complectation__groups">
+            <div class="spec-group">
+              <h4 class="spec-group__title">Генплан участка</h4>
+              <ul>
+                <li>Посадка и разметка дома на участок;</li>
+                <li>
+                  Архитектурный и конструктивные проекты дома, печатный альбом
+                  А3.
+                </li>
+              </ul>
+            </div>
+            <div class="spec-group">
+              <h4 class="spec-group__title">Фундамент</h4>
+              <ul>
+                <li>Плита железобетонная монолитная;</li>
+                <li>Вынос осей дома;</li>
+                <li>
+                  Планировка пятна застройки на 1,2 метра шире границ дома —
+                  подготовка под отмостку;
+                </li>
+                <li>Укладка разделительного слоя из геотекстиля;</li>
+                <li>Утрамбованное песчаное основание;</li>
+                <li>Монтаж системы канализации Ø110 мм по точкам;</li>
+                <li>Ввод водопроводной трубы ПНД Ø32 мм в дом;</li>
+                <li>
+                  Закладные для питающего электрического кабеля и слаботочных
+                  систем;
+                </li>
+                <li>
+                  Армирование фундамента арматура (ГОСТ), диаметр согласно
+                  конструктивному проекту;
+                </li>
+                <li>Бетон В 25 (М350) с проверенного РБУ;</li>
+                <li>Заливка автобетононасосом, вибрирование;</li>
+                <li>Уход за бетоном;</li>
+                <li>Проверка качества бетона склерометром.</li>
+              </ul>
+            </div>
+            <div class="spec-group">
+              <h4 class="spec-group__title">Коробка</h4>
+              <ul>
+                <li>
+                  Наружные стены: газобетонные блоки — 400 мм плотность — D500 /
+                  300 мм D400;
+                </li>
+                <li>
+                  Внутренние несущие стены: газобетонные блоки — 250/300 мм
+                  плотность — D500;
+                </li>
+                <li>
+                  Перегородки: газобетонные блоки — 100/150 мм плотность — D500;
+                </li>
+                <li>Доработка геометрии блоков;</li>
+                <li>Тонкошовная кладка на пенополиуретановый клей;</li>
+                <li>Армирование стен двумя стержнями арматуры Ø12 мм;</li>
+                <li>
+                  Внутренние и наружные перемычки заводского изготовления;
+                </li>
+                <li>Все бетонные элементы утеплены ЭППС.</li>
+              </ul>
+            </div>
+            <div class="spec-group">
+              <h4 class="spec-group__title">Кровля</h4>
+              <ul>
+                <li>
+                  Перекрытие — сборная железобетонная плита заводского
+                  изготовления / монолитное перекрытие;
+                </li>
+                <li>Направляемая пароизоляция «Технониколь».</li>
+              </ul>
+            </div>
+            <div class="spec-group">
+              <h4 class="spec-group__title">Организационные расходы</h4>
+              <ul>
+                <li>Технический надзор;</li>
+                <li>Видеонаблюдение;</li>
+                <li>Раздельный сбор и вывоз мусора;</li>
+                <li>Установка бытовки.</li>
+              </ul>
+            </div>
+            </div>
+            <button class="complectation__more" type="button">Ещё</button>
+          </div>
+          <div class="complectation__col">
+            <h3 class="complectation__col-title">Теплый контур</h3>
+            <div class="complectation__groups">
+            <div class="spec-group">
+              <h4 class="spec-group__title">Генплан участка</h4>
+              <ul>
+                <li>Посадка и разметка дома на участок;</li>
+                <li>
+                  Архитектурный и конструктивные проекты дома, печатный альбом
+                  А3.
+                </li>
+              </ul>
+            </div>
+            <div class="spec-group">
+              <h4 class="spec-group__title">Фундамент</h4>
+              <ul>
+                <li>Плита железобетонная монолитная;</li>
+                <li>Вынос осей дома;</li>
+                <li>
+                  Планировка пятна застройки на 1,2 метра шире границ дома;
+                </li>
+                <li>Укладка разделительного слоя из геотекстиля;</li>
+                <li>Утрамбованное песчаное основание;</li>
+                <li>Гидроизоляционная мембрана PLANTER standart;</li>
+                <li>Монтаж системы канализации Ø110 мм по точкам;</li>
+                <li>Ввод водопроводной трубы ПНД Ø32 мм в дом;</li>
+                <li>
+                  Закладные для питающего электрического кабеля и слаботочных
+                  систем;
+                </li>
+                <li>Армирование фундамента арматура (ГОСТ);</li>
+                <li>Бетон В 25 (М350) с проверенного РБУ;</li>
+                <li>Заливка автобетононасосом, вибрирование;</li>
+                <li>Уход за бетоном, проверка склерометром.</li>
+              </ul>
+            </div>
+            <div class="spec-group">
+              <h4 class="spec-group__title">Коробка</h4>
+              <ul>
+                <li>Утепление и гидроизоляция кровли:</li>
+                <li>Мембрана кровельная ПВХ «Технониколь»;</li>
+                <li>
+                  Разделительный, фильтрационный и защитный слой геотекстиль
+                  «Технониколь»;
+                </li>
+                <li>Полусухая стяжка с разуклонкой;</li>
+                <li>Утепление «Технониколь XPS Carbon» 200мм;</li>
+                <li>Пароизоляция Биполь ХПП;</li>
+                <li>Воронки парапетные «Технониколь»;</li>
+                <li>
+                  Греющий кабель для обогрева парапетных воронок и водосточной
+                  системы;
+                </li>
+                <li>Аэраторы кровельные;</li>
+                <li>
+                  Наружные стены: газобетонные блоки (400мм D500 / 300мм D400);
+                </li>
+                <li>
+                  Внутренние несущие стены: газобетонные блоки (250/300мм D500);
+                </li>
+                <li>Перегородки: газобетонные блоки (100/150мм D500);</li>
+                <li>Доработка геометрии блоков, тонкошовная кладка;</li>
+                <li>Армирование стен, перемычки, утепление ЭППС.</li>
+              </ul>
+            </div>
+            <div class="spec-group">
+              <h4 class="spec-group__title">Кровля</h4>
+              <ul>
+                <li>Перекрытие — сборная железобетонная плита / монолитное;</li>
+                <li>Направляемая пароизоляция «Технониколь».</li>
+              </ul>
+            </div>
+            <div class="spec-group">
+              <h4 class="spec-group__title">Окна</h4>
+              <ul>
+                <li>Профиль согласно Архитектурному проекту.</li>
+              </ul>
+            </div>
+            <div class="spec-group">
+              <h4 class="spec-group__title">Организационные расходы</h4>
+              <ul>
+                <li>Технический надзор, видеонаблюдение;</li>
+                <li>Раздельный сбор и вывоз мусора;</li>
+                <li>Установка бытовки;</li>
+                <li>Регистрация дома.</li>
+              </ul>
+            </div>
+            </div>
+            <button class="complectation__more" type="button">Ещё</button>
+          </div>
+        </div>
+      </section>
+      <!-- ===================== КАРТОЧКИ-ССЫЛКИ ===================== -->
+      <section class="section project-links">
+        <a href="#" class="project-link">
+          <span class="project-link__icon"
+            ><img src="img/icons/plan.svg" alt=""
+          /></span>
+          <h3 class="project-link__title">Индивидуальное проектирование</h3>
+          <p class="project-link__text">Архитектурный проект <span></span>в подарок</p>
+          <span class="project-link__arrow"
+            ><svg viewBox="0 0 18 18" fill="none">
+              <path
+                d="M5 13L13 5m0 0H6m7 0v7"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+          ></span>
+        </a>
+        <a href="#" class="project-link">
+          <span class="project-link__icon"
+            ><img src="img/ui/percent.svg" alt=""
+          /></span>
+          <h3 class="project-link__title">Строительство в рассрочку</h3>
+          <p class="project-link__text">Выгодные условия <span>под 0%</span></p>
+          <span class="project-link__arrow"
+            ><svg viewBox="0 0 18 18" fill="none">
+              <path
+                d="M5 13L13 5m0 0H6m7 0v7"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+          ></span>
+        </a>
+        <a href="index.html#projects" class="project-link">
+          <span class="project-link__icon"
+            ><img src="img/icons/search-small-plus.svg" alt=""
+          /></span>
+          <h3 class="project-link__title">Похожие проекты</h3>
+          <p class="project-link__text">Смотрите варианты <span>в каталоге</span></p>
+          <span class="project-link__arrow"
+            ><svg viewBox="0 0 18 18" fill="none">
+              <path
+                d="M5 13L13 5m0 0H6m7 0v7"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+          ></span>
+        </a>
+      </section>
+
+      <!-- ===================== ВИДЕО-ВИЗИТКА ===================== -->
+      <section class="section">
+        <h2 class="section-title" style="margin-bottom: 28px">Видео-визитка</h2>
+        <div class="video-card">
+          <img
+            src="img/projects/hero.jpg"
+            alt="Видео-визитка проекта «Калипсо»"
+          />
+          <span class="video-card__play"
+            ><img src="img/ui/play.png" alt=""
+          /></span>
+          <span class="video-card__bar"></span>
+        </div>
+      </section>
+    </div>
+    <!-- /.container -->
+
+    <!-- ===================== ПОДВАЛ ===================== -->
+    <footer class="footer" id="footer">
+      <div class="container" style="padding: 0">
+        <div class="footer__top">
+          <div class="footer__col">
+            <p class="footer__col-title">Застройщик:</p>
+            <p class="footer__addr">
+              ИП Тонни Александр Владимирович<br />ИНН 780627188270<br /><br />Санкт-Петербург,
+              наб. Обводного канала, 21, офис 1-49
+            </p>
+          </div>
+          <div class="footer__col">
+            <p class="footer__col-title">Наши объекты</p>
+            <div class="footer__links">
+              <a href="index.html#projects">Поиск по фильтру</a
+              ><a href="index.html#projects">Типовые проекты</a
+              ><a href="index.html#projects">Индивидуальные проекты</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <p class="footer__col-title">Способы покупки</p>
+            <div class="footer__links">
+              <a href="#">Ипотека</a><a href="#">Рассрочка</a
+              ><a href="#">Trade-in</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <p class="footer__col-title">Компания</p>
+            <div class="footer__links">
+              <a href="#">О нас</a><a href="#footer">Контакты</a
+              ><a href="index.html#projects">Популярные проекты</a
+              ><a href="#">Клубные поселки</a><a href="#">Наши услуги</a
+              ><a href="#">Схема работы</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__bottom-left">
+            <a href="index.html" class="footer__logo"
+              ><img src="img/ui/logo.svg" alt="Наследие"
+            /></a>
+            <p class="footer__copy">
+              2025 © Строительная Мастерская «Наследие»
+            </p>
+          </div>
+          <div class="footer__bottom-mid">
+            <div class="footer__legal">
+              <a href="#">Политика обработки персональных данных</a
+              ><a href="#">Третьи лица</a>
+            </div>
+            <p class="footer__disclaimer">
+              Любая информация, представленная на данном сайте, носит
+              исключительно информационный характер и ни при каких условиях не
+              является публичной офертой, определяемой положениями статьи 437 ГК
+              РФ.
+            </p>
+          </div>
+          <div class="footer__bottom-right">
+            <div class="footer__socials">
+              <a href="#" class="social" aria-label="ВКонтакте"
+                ><img src="img/icons/vk.svg" alt="VK"
+              /></a>
+              <a href="#" class="social" aria-label="MAX"
+                ><img src="img/icons/max.svg" alt="MAX"
+              /></a>
+            </div>
+            <div class="footer__contacts-bottom">
+              <div class="footer__contact">
+                <span>Сот</span><a href="tel:+74952560054">+7 495 256 00 54</a>
+              </div>
+              <div class="footer__contact">
+                <span>Мск</span><a href="tel:+78127483992">+7 812 748 39 98</a>
+              </div>
+              <div class="footer__contact">
+                <span>Спб</span><a href="tel:+79197696730">+7 919 769 67 30</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===================== ПЛАВАЮЩАЯ КНОПКА ОПРОСА ===================== -->
+      
+
+    <a class="quiz-fab" href="quiz.html" aria-label="Пройти опрос">
+      <span class="quiz-fab__icon">
+        <img src="img/icons/survey.svg" alt="Иконка опроса" />
+      </span>
+      <span class="quiz-fab__body">
+        <span class="quiz-fab__label">Опрос</span>
+        <span class="quiz-fab__title">Расчёт стоимости</span>
+        <span class="quiz-fab__title">6 вопросов</span>
+      </span>
+    </a>
+
+    <!-- ===================== МОДАЛЬНОЕ ОКНО ===================== -->
+    <div class="modal">
+      <div class="modal__box">
+        <button class="modal__close" data-modal-close aria-label="Закрыть">
+          &times;
+        </button>
+        <h3 class="modal__title">Оставьте заявку</h3>
+        <p class="modal__text">
+          Заполните форму, и мы свяжемся с вами для подробной презентации
+          проекта «Калипсо».
+        </p>
+        <form data-lead-form>
+          <input
+            class="form-field"
+            type="text"
+            placeholder="Ваше имя"
+            required
+          />
+          <input
+            class="form-field"
+            type="tel"
+            placeholder="+7 (999) 999-99-99"
+            required
+          />
+          <textarea class="form-field" placeholder="Комментарий"></textarea>
+          <button
+            type="submit"
+            class="btn-submit"
+            style="width: 100%; margin-top: 8px"
+          >
+            Отправить<span class="btn-circle"
+              ><svg viewBox="0 0 22 22" fill="none">
+                <path
+                  d="M5 11h12m0 0l-5-5m5 5l-5 5"
+                  stroke="#FD4D00"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                /></svg
+            ></span>
+          </button>
+          <label class="form-consent" style="margin-top: 14px">
+            <input type="checkbox" checked required />Я соглашаюсь на
+            <a href="#">обработку персональных данных</a>
+          </label>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/houses-data.js?v=7"></script>
+    <script src="js/main.js?v=13"></script>
+    <script src="js/project.js?v=11"></script>
+  </body>
+</html>

@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Расчёт стоимости — опрос | Наследие</title>
+    <meta
+      name="description"
+      content="Пройдите короткий опрос из 6 вопросов и получите подборку проектов домов с расчётом стоимости от мастерской «Наследие»."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css?v=58" />
+  </head>
+  <body>
+    <!-- ===================== ШАПКА ===================== -->
+    <header class="header">
+      <button class="burger" aria-label="Меню">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path
+            d="M3 9h18M3 15h11"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+      <a href="index.html" class="logo"
+        ><img
+          src="img/ui/logo.svg"
+          alt="Наследие — архитектурно-строительная мастерская"
+      /></a>
+      <nav class="nav">
+        <a href="index.html#projects" class="nav__link"
+          >Проекты
+          <svg class="nav__caret" viewBox="0 0 10 6" fill="none">
+            <path
+              d="M1 1l4 4 4-4"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </a>
+        <a href="index.html#trust" class="nav__link">О компании</a>
+        <a href="index.html#examples" class="nav__link">Примеры работ</a>
+        <a href="index.html#footer" class="nav__link">Контакты</a>
+      </nav>
+      <div class="header__right">
+        <div class="socials">
+          <a href="#" class="social" aria-label="ВКонтакте"
+            ><img src="img/icons/vk.svg" alt="VK"
+          /></a>
+          <a href="#" class="social" aria-label="MAX"
+            ><img src="img/icons/max.svg" alt="MAX"
+          /></a>
+        </div>
+        <span class="header__phone">+7 (495) 256-00-54</span>
+        <button class="btn-outline" data-modal-open>
+          Скачать каталог в PDF<img src="img/icons/download.svg" alt="" />
+        </button>
+      </div>
+    </header>
+
+    <main class="quiz-page" data-quiz>
+      <div class="quiz__box">
+        <div class="quiz__head">
+          <span class="quiz__count">Вопрос 1 из 6</span>
+          <span class="quiz__pct">17%</span>
+        </div>
+        <div class="quiz__progress"><span></span></div>
+
+        <!-- Вопрос 1 -->
+        <div
+          class="quiz-panel is-active"
+          data-progress="17"
+          data-count="Вопрос 1 из 6"
+        >
+          <h3 class="quiz-panel__q">У вас уже есть участок?</h3>
+          <div class="quiz-options">
+            <button class="quiz-opt" type="button">Да</button>
+            <button class="quiz-opt" type="button">Нет</button>
+          </div>
+          <div class="quiz-foot">
+            <button class="quiz-next" type="button" data-quiz-next>
+              Далее<span class="btn-circle"
+                ><img src="img/ui/arrow.svg" alt=""
+              /></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Вопрос 2 -->
+        <div
+          class="quiz-panel"
+          data-progress="33"
+          data-count="Вопрос 2 из 6"
+          data-multi="true"
+        >
+          <h3 class="quiz-panel__q">Какие стили нравятся?</h3>
+          <p class="quiz-panel__hint">*Отметьте один или несколько вариантов</p>
+          <div class="quiz-options quiz-options--grid">
+            <button class="quiz-opt" type="button">Барн</button>
+            <button class="quiz-opt" type="button">Хай-тек</button>
+            <button class="quiz-opt" type="button">Райт</button>
+            <button class="quiz-opt" type="button">Современный</button>
+            <button class="quiz-opt" type="button">Сканди</button>
+            <button class="quiz-opt" type="button">Другое</button>
+          </div>
+          <div class="quiz-foot">
+            <button class="quiz-next" type="button" data-quiz-next>
+              Далее<span class="btn-circle"
+                ><img src="img/ui/arrow.svg" alt=""
+              /></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Вопрос 3 -->
+        <div class="quiz-panel" data-progress="50" data-count="Вопрос 3 из 6">
+          <h3 class="quiz-panel__q">Сколько этажей хотели бы?</h3>
+          <div class="quiz-options">
+            <button class="quiz-opt" type="button">1 этаж</button>
+            <button class="quiz-opt" type="button">2 этажа</button>
+            <button class="quiz-opt" type="button">3 этажа</button>
+          </div>
+          <div class="quiz-foot">
+            <button class="quiz-next" type="button" data-quiz-next>
+              Далее<span class="btn-circle"
+                ><img src="img/ui/arrow.svg" alt=""
+              /></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Вопрос 4 -->
+        <div class="quiz-panel" data-progress="67" data-count="Вопрос 4 из 6">
+          <h3 class="quiz-panel__q">Какая площадь дома вам подходит?</h3>
+          <div class="quiz-options">
+            <button class="quiz-opt" type="button">До 120 м²</button>
+            <button class="quiz-opt" type="button">120–200 м²</button>
+            <button class="quiz-opt" type="button">Более 200 м²</button>
+          </div>
+          <div class="quiz-foot">
+            <button class="quiz-next" type="button" data-quiz-next>
+              Далее<span class="btn-circle"
+                ><img src="img/ui/arrow.svg" alt=""
+              /></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Вопрос 5 -->
+        <div class="quiz-panel" data-progress="83" data-count="Вопрос 5 из 6">
+          <h3 class="quiz-panel__q">Из какого материала хотите строить дом?</h3>
+          <div class="quiz-options">
+            <button class="quiz-opt" type="button">Тёплая керамика</button>
+            <button class="quiz-opt" type="button">Газобетон</button>
+          </div>
+          <div class="quiz-foot">
+            <button class="quiz-next" type="button" data-quiz-next>
+              Далее<span class="btn-circle"
+                ><img src="img/ui/arrow.svg" alt=""
+              /></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Вопрос 6 -->
+        <div class="quiz-panel" data-progress="100" data-count="Вопрос 6 из 6">
+          <h3 class="quiz-panel__q">
+            Какой примерный бюджет закладываете на строительство дома?
+          </h3>
+          <div class="quiz-options quiz-options--grid">
+            <button class="quiz-opt" type="button">До 10 млн</button>
+            <button class="quiz-opt" type="button">10–15 млн</button>
+            <button class="quiz-opt" type="button">15–20 млн</button>
+            <button class="quiz-opt" type="button">Более 20 млн</button>
+          </div>
+          <div class="quiz-foot">
+            <button class="quiz-next" type="button" data-quiz-next>
+              Далее<span class="btn-circle"
+                ><img src="img/ui/arrow.svg" alt=""
+              /></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Контакты -->
+        <div class="quiz-panel quiz-panel--final">
+          <div class="quiz-channels">
+            <button class="quiz-channel quiz-channel-tg" type="button">
+              <img src="img/icons/telegram.svg" alt="" />Telegram
+            </button>
+            <button class="quiz-channel quiz-channel-max" type="button">
+              <img src="img/icons/max-blue.svg" alt="" />МАКС
+            </button>
+          </div>
+
+          <div class="quiz-final">
+            <h3 class="quiz-final__title">Отлично! Последний шаг</h3>
+            <p class="quiz-final__text">
+              Оставьте контакты и мы пришлём вам подборку проектов с расчётом
+            </p>
+            <form class="quiz-form" data-quiz-form>
+              <div class="quiz-form__row">
+                <span class="quiz-form__label">Ваше имя</span>
+                <input class="quiz-field" type="text" required />
+              </div>
+              <div class="quiz-form__row">
+                <input
+                  class="quiz-field"
+                  type="tel"
+                  placeholder="+7 (___) ___-__-__"
+                  required
+                />
+              </div>
+              <div class="quiz-form__row">
+                <span class="quiz-form__label"
+                  >Дополнительный вопрос: <em>*необязательно</em></span
+                >
+                <input class="quiz-field" type="text" />
+              </div>
+              <button type="submit" class="btn-submit">
+                <p>Получить расчёт!</p>
+                <span class="btn-circle">
+                  <img src="img/ui/arrow.svg" alt="" />
+                </span>
+              </button>
+              <label class="quiz-consent"
+                ><input type="checkbox" checked />Я соглашаюсь на
+                <a href="#">обработку персональных данных</a></label
+              >
+            </form>
+          </div>
+        </div>
+
+        <!-- Спасибо -->
+        <div class="quiz-panel quiz-panel--thanks">
+          <h3 class="quiz-final__title">Спасибо за заявку!</h3>
+          <p class="quiz-final__text">
+            Наш менеджер свяжется с вами в ближайшее время. А пока вы можете
+            посмотреть наш сайт и контент в социальных сетях
+          </p>
+          <div class="quiz-socials">
+            <a href="#" class="quiz-social quiz-social--site"
+              ><span class="quiz-social__ic"
+                ><img src="img/icons/globe.svg" alt="" /></span
+              ><p>Наш сайт</p></a
+            >
+            <a href="#" class="quiz-social quiz-social--dzen"
+              ><span class="quiz-social__ic"
+                ><img src="img/icons/zen.svg" alt="" /></span
+              ><p>Дзен</p></a
+            >
+            <a href="#" class="quiz-social quiz-social--vk"
+              ><span class="quiz-social__ic"
+                ><img src="img/icons/vk-blue.svg" alt="" /></span
+              ><p>Вконтакте</p></a
+            >
+            <a href="#" class="quiz-social quiz-social--tg"
+              ><span class="quiz-social__ic"
+                ><img src="img/icons/telegram.svg" alt="" /></span
+              ><p>Telegram</p></a
+            >
+            <a href="#" class="quiz-social quiz-social--max"
+              ><span class="quiz-social__ic"
+                ><img src="img/icons/max-blue.svg" alt="" /></span
+              ><p>Макс</p></a
+            >
+            <a href="#" class="quiz-social quiz-social--ok"
+              ><span class="quiz-social__ic"
+                ><img src="img/icons/instagram.svg" alt="" /></span
+              ><p>Instagram</p></a
+            >
+          </div>
+          <p class="quiz-disclaimer">
+            *Компания Meta Platforms Inc., владеющая социальными сетями Facebook и Instagram, по решению суда от 21.03.2022 признана экстремистской организацией, ее деятельность на территории России запрещена.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="container" style="padding: 0">
+        <div class="footer__top">
+          <div class="footer__col">
+            <p class="footer__col-title">Застройщик:</p>
+            <p class="footer__addr">
+              ИП Тонни Александр Владимирович<br />ИНН 780627188270<br /><br />Санкт-Петербург,
+              наб. Обводного канала, 21, офис 1-49
+            </p>
+          </div>
+          <div class="footer__col">
+            <p class="footer__col-title">Наши объекты</p>
+            <div class="footer__links">
+              <a href="index.html#projects">Поиск по фильтру</a
+              ><a href="index.html#projects">Типовые проекты</a
+              ><a href="index.html#projects">Индивидуальные проекты</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <p class="footer__col-title">Способы покупки</p>
+            <div class="footer__links">
+              <a href="#">Ипотека</a><a href="#">Рассрочка</a
+              ><a href="#">Trade-in</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <p class="footer__col-title">Компания</p>
+            <div class="footer__links">
+              <a href="#">О нас</a><a href="#footer">Контакты</a
+              ><a href="index.html#projects">Популярные проекты</a
+              ><a href="#">Клубные поселки</a><a href="#">Наши услуги</a
+              ><a href="#">Схема работы</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__bottom-left">
+            <a href="index.html" class="footer__logo"
+              ><img src="img/ui/logo.svg" alt="Наследие"
+            /></a>
+            <p class="footer__copy">
+              2025 © Строительная Мастерская «Наследие»
+            </p>
+          </div>
+          <div class="footer__bottom-mid">
+            <div class="footer__legal">
+              <a href="#">Политика обработки персональных данных</a
+              ><a href="#">Третьи лица</a>
+            </div>
+            <p class="footer__disclaimer">
+              Любая информация, представленная на данном сайте, носит
+              исключительно информационный характер и ни при каких условиях не
+              является публичной офертой, определяемой положениями статьи 437 ГК
+              РФ.
+            </p>
+          </div>
+          <div class="footer__bottom-right">
+            <div class="footer__socials">
+              <a href="#" class="social" aria-label="ВКонтакте"
+                ><img src="img/icons/vk.svg" alt="VK"
+              /></a>
+              <a href="#" class="social" aria-label="MAX"
+                ><img src="img/icons/max.svg" alt="MAX"
+              /></a>
+            </div>
+            <div class="footer__contacts-bottom">
+              <div class="footer__contact">
+                <span>Сот</span><a href="tel:+74952560054">+7 495 256 00 54</a>
+              </div>
+              <div class="footer__contact">
+                <span>Мск</span><a href="tel:+78127483992">+7 812 748 39 98</a>
+              </div>
+              <div class="footer__contact">
+                <span>Спб</span><a href="tel:+79197696730">+7 919 769 67 30</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js?v=6"></script>
+  </body>
+</html>
