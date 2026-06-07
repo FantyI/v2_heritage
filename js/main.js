@@ -405,6 +405,39 @@
     });
   }
 
+  /* ---------- Уведомление об использовании cookies ---------- */
+  (function () {
+    var STORAGE_KEY = 'cookieConsent';
+    var consent;
+    try { consent = localStorage.getItem(STORAGE_KEY); } catch (e) { consent = 'accepted'; }
+    if (consent === 'accepted') return; // согласие уже получено — баннер не показываем
+
+    var banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-label', 'Уведомление об использовании cookies');
+    banner.innerHTML =
+      '<p class="cookie-banner__text">Мы используем файлы cookie, чтобы сайт работал' +
+      ' корректно и был удобнее для вас. Продолжая пользоваться сайтом, вы соглашаетесь' +
+      ' на обработку файлов cookie. <a href="#">Подробнее</a></p>' +
+      '<button type="button" class="cookie-banner__btn">Принять</button>';
+
+    function dismiss() {
+      try { localStorage.setItem(STORAGE_KEY, 'accepted'); } catch (e) {}
+      banner.classList.remove('is-visible');
+      setTimeout(function () {
+        if (banner.parentNode) banner.parentNode.removeChild(banner);
+      }, 400);
+    }
+    banner.querySelector('.cookie-banner__btn').addEventListener('click', dismiss);
+
+    document.body.appendChild(banner);
+    /* запускаем появление на следующем кадре, чтобы сработал transition */
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { banner.classList.add('is-visible'); });
+    });
+  })();
+
 })();
 
 /* ---------- Опрос (квиз) ---------- */
