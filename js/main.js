@@ -57,12 +57,10 @@
     });
   }
 
-  /* ---------- Каталог проектов: карточки из данных + фильтры + «Показать ещё» ----------
-     Источник правды — массив HOUSES в js/houses-data.js. Сетка, вкладки-фильтры
-     и кнопка «Показать ещё» работают полностью отсюда; HTML менять не нужно. */
+  /* ---------- Каталог проектов: карточки, фильтры, «Показать ещё» ---------- */
   var projectsGrid = document.getElementById('projectsGrid');
   if (projectsGrid && typeof HOUSES !== 'undefined' && Array.isArray(HOUSES)) {
-    var VISIBLE_COUNT = 6;            // карточек видно до нажатия «Показать ещё»
+    var VISIBLE_COUNT = 6;
     var moreRow = document.querySelector('.more-row');
     var moreBtn = document.getElementById('moreBtn');
     var tabButtons = document.querySelectorAll('.tab');
@@ -266,6 +264,42 @@
       video.addEventListener('play', function () { reel.classList.add('is-playing'); });
       video.addEventListener('pause', function () { reel.classList.remove('is-playing'); });
       video.addEventListener('ended', function () { reel.classList.remove('is-playing'); });
+    });
+  })();
+
+  /* ---------- Плавающая кнопка опроса: свайп-скрытие на мобилке ---------- */
+  (function () {
+    var fab = document.querySelector('.quiz-fab');
+    if (!fab) return;
+    var mq = window.matchMedia('(max-width: 600px)');
+    var startX = 0, startY = 0, moved = false;
+    fab.addEventListener('touchstart', function (e) {
+      var t = e.touches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      moved = false;
+    }, { passive: true });
+    fab.addEventListener('touchmove', function (e) {
+      var t = e.touches[0];
+      var dx = t.clientX - startX;
+      var dy = t.clientY - startY;
+      if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) moved = true;
+      if (dx > 24) fab.classList.add('is-collapsed');
+      else if (dx < -24) fab.classList.remove('is-collapsed');
+    }, { passive: true });
+    fab.addEventListener('click', function (e) {
+      if (!mq.matches) return;                         // десктоп — обычная ссылка
+      var wasMoved = moved;
+      moved = false;
+      if (wasMoved) { e.preventDefault(); return; }    // был свайп — не переходим
+      if (fab.classList.contains('is-collapsed')) {    // тап по торчащей части — раскрыть
+        e.preventDefault();
+        fab.classList.remove('is-collapsed');
+      }
+    });
+    // при возврате к десктопу сбрасываем свёрнутое состояние
+    mq.addEventListener('change', function () {
+      if (!mq.matches) { fab.classList.remove('is-collapsed'); moved = false; }
     });
   })();
 

@@ -6,37 +6,26 @@
 (function () {
   'use strict';
 
-  // Получаем id из URL: ?id=kalipso
   var params = new URLSearchParams(window.location.search);
   var id = params.get('id');
 
-  // Данные не загрузились — оставляем страницу как есть
   if (typeof HOUSES === 'undefined') return;
 
-  // Ищем дом по id в массиве
   var h = null;
   for (var i = 0; i < HOUSES.length; i++) {
     if (HOUSES[i].id === id) { h = HOUSES[i]; break; }
   }
 
-  // Дом не найден (удалён из данных или неверный id) — возвращаем к списку
-  // проектов, чтобы не показывать чужой статичный контент.
   if (!h) {
     window.location.replace('index.html#projects');
     return;
   }
 
-  /* --- Обновляем заголовок страницы и мета --- */
   document.title = h.name + ' — проект дома из газобетона | Наследие';
 
-  /* --- Утилита --- */
   function setText(sel, val) {
     var el = document.querySelector(sel);
     if (el && val !== undefined) el.textContent = val;
-  }
-  function setAttr(sel, attr, val) {
-    var el = document.querySelector(sel);
-    if (el && val !== undefined) el.setAttribute(attr, val);
   }
 
   /* --- Карточка покупки --- */
@@ -46,7 +35,6 @@
   setText('.buy-card__id', 'ID объекта: ' + h.objectId);
 
   /* --- Характеристики --- */
-  var specValues = document.querySelectorAll('.spec-card__value');
   var specLabels = document.querySelectorAll('.spec-card__label');
   var specMap = {
     'Общая площадь':  h.area,
@@ -72,7 +60,6 @@
   /* --- Текст модального окна --- */
   var modalText = document.querySelector('.modal__text');
   if (modalText) modalText.textContent = 'Заполните форму, и мы свяжемся с вами для подробной презентации проекта «' + h.name + '».';
-
 
   /* --- Комплектация --- */
   if (h.complectation) {
@@ -119,14 +106,10 @@
     }
   }
 
-  /* --- Кнопка «Презентация» в карточке покупки ---
-     Если у дома есть файл презентации — скачиваем его по клику.
-     Если файла нет — кнопка открывает модальное окно «Оставьте заявку»
-     (через data-modal-open, обработчик в main.js). */
+  /* --- Кнопка «Презентация»: скачивание файла либо форма заявки --- */
   var presentBtn = document.getElementById('presentBtn');
   if (presentBtn && h.presentationUrl) {
-    // Заменяем кнопку её клоном, чтобы снять обработчик открытия модалки,
-    // навешанный в main.js, и оставить только скачивание.
+    // клон снимает обработчик модалки из main.js, оставляя только скачивание
     var freshBtn = presentBtn.cloneNode(true);
     presentBtn.parentNode.replaceChild(freshBtn, presentBtn);
     freshBtn.addEventListener('click', function (e) {
@@ -168,22 +151,31 @@
   }
 
   /* --- Галерея: динамически генерируем миниатюры --- */
+  function dropSkeleton(img, wrap) {
+    if (!wrap) return;
+    var done = function () { wrap.classList.remove('is-skeleton'); };
+    img.addEventListener('load', done, { once: true });
+    img.addEventListener('error', done, { once: true });
+  }
+
   var thumbsContainer = document.querySelector('.gallery__thumbs');
   var mainImg = document.querySelector('.gallery__main img');
   if (h.images && h.images.length && thumbsContainer) {
     thumbsContainer.innerHTML = '';
     h.images.forEach(function (src, i) {
       var div = document.createElement('div');
-      div.className = 'gallery__thumb' + (i === 0 ? ' is-active' : '');
+      div.className = 'gallery__thumb is-skeleton' + (i === 0 ? ' is-active' : '');
       var img = document.createElement('img');
-      img.setAttribute('src', src);
       img.setAttribute('alt', 'Вид ' + (i + 1));
       div.appendChild(img);
       thumbsContainer.appendChild(div);
+      dropSkeleton(img, div);
+      img.setAttribute('src', src);
     });
     if (mainImg) {
-      mainImg.setAttribute('src', h.images[0]);
       mainImg.setAttribute('alt', 'Проект дома «' + h.name + '»');
+      dropSkeleton(mainImg, mainImg.closest('.gallery__main'));
+      mainImg.setAttribute('src', h.images[0]);
     }
   }
 
@@ -241,25 +233,25 @@
   var track = document.querySelector('.gallery__thumbs');
   if (!track) return;
 
-  var isDown = false;        // зажата ли кнопка
-  var moved = false;         // было ли перетаскивание (чтобы не сработал клик)
-  var startX = 0;            // позиция курсора в начале
-  var startScroll = 0;       // scrollLeft в начале
-  var samples = [];          // выборка {x, t} последних движений для расчёта скорости
+  var isDown = false;
+  var moved = false;
+  var startX = 0;
+  var startScroll = 0;
+  var samples = [];          // последние позиции {x, t} для расчёта скорости
   var rafId = null;
 
   function cancelRaf() { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
 
   track.addEventListener('mousedown', function (e) {
-    if (e.button !== 0) return;            // только левая кнопка
+    if (e.button !== 0) return;
     isDown = true;
     moved = false;
     startX = e.clientX;
     startScroll = track.scrollLeft;
     samples = [{ x: e.clientX, t: performance.now() }];
     cancelRaf();
-    track.style.scrollBehavior = 'auto';   // никакого плавного скролла во время drag/инерции
-    e.preventDefault();                    // без выделения текста/картинок
+    track.style.scrollBehavior = 'auto';
+    e.preventDefault();
   });
 
   document.addEventListener('mousemove', function (e) {
@@ -270,7 +262,7 @@
       track.classList.add('is-dragging');
     }
     if (!moved) return;
-    track.scrollLeft = startScroll - dx;   // лента 1:1 за курсором
+    track.scrollLeft = startScroll - dx;
     samples.push({ x: e.clientX, t: performance.now() });
     if (samples.length > 8) samples.shift();
   });
@@ -279,28 +271,28 @@
     if (!isDown) return;
     isDown = false;
     track.classList.remove('is-dragging');
-    if (!moved) return;                    // обычный клик — без инерции
+    if (!moved) return;
 
-    // скорость курсора по выборке за последние ~120 мс (устойчиво к «нулевому» кадру)
+    // скорость по выборке за последние ~120 мс
     var now = performance.now();
     var recent = samples.filter(function (s) { return now - s.t < 120; });
     var vScroll = 0;
     if (recent.length >= 2) {
       var a = recent[0], b = recent[recent.length - 1];
       var dt = b.t - a.t;
-      if (dt > 0) vScroll = -((b.x - a.x) / dt) * 16; // px/кадр, скролл ↔ курсор
+      if (dt > 0) vScroll = -((b.x - a.x) / dt) * 16;
     }
     if (Math.abs(vScroll) < 0.5) return;
 
     (function momentum() {
       track.scrollLeft += vScroll;
-      vScroll *= 0.95;                      // затухание
+      vScroll *= 0.95;
       if (Math.abs(vScroll) < 0.5) { rafId = null; return; }
       rafId = requestAnimationFrame(momentum);
     })();
   });
 
-  // если было перетаскивание — гасим клик по миниатюре (чтобы не менять главное фото)
+  // после перетаскивания гасим клик, чтобы не сменилось главное фото
   track.addEventListener('click', function (e) {
     if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
   }, true);

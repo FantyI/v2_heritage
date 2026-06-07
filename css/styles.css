@@ -2412,7 +2412,7 @@ select.form-field {
 
 .modal__title {
   font-family: "Gilroy", sans-serif;
-  font-size: 55px;
+  font-size: 28px;
   font-weight: 800;
   margin-bottom: 10px;
 }
@@ -4400,9 +4400,37 @@ select.form-field {
 
   
 
+  .quiz-fab {
+    gap: 9px;
+    padding: 10px 14px 10px 10px;
+    border-radius: 16px 0 0 16px;
+    box-shadow: 0 10px 26px rgba(28, 36, 64, 0.28);
+  }
+
   .quiz-fab__icon {
-    width: 42px;
-    height: 42px;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+  }
+
+  .quiz-fab__icon svg,
+  .quiz-fab__icon img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .quiz-fab__label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .quiz-fab__title {
+    font-size: 11px;
+  }
+
+  /* свайпом вправо прячется, торчит иконка */
+  .quiz-fab.is-collapsed {
+    transform: translateX(calc(100% - 48px));
   }
 }
 /* ---------- Квиз как отдельная страница (/quiz) ---------- */

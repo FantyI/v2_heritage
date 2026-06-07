@@ -552,7 +552,7 @@ const HOUSES = [
       "img/projects/astro/astro_19.jpg",
       "img/projects/astro/astro_20.jpg"
     ],
-    videoThumb:  "img/projects/astro/astro_new_1.jpg",
+    videoThumb:  "img/projects/astro/astro_1.jpg",
     videoUrl:    "",
     presentationUrl: "",
     description: "Одноэтажный дом в стиле хайтек с четырьмя комнатами и двумя санузлами. Скатная кровля, газобетонные стены, штукатурный фасад Cerezit. Профиль Rehau, энергосберегающие стёкла.",
