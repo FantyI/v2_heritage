@@ -11,12 +11,36 @@
   font-display: swap
 }
 
-/* ---------- Верхний блок: галерея + карточка покупки ---------- */
-.project-top {
+/* ---------- Двухколоночный макет: слева скролл (галерея + характеристики),
+              справа липкая карточка покупки ---------- */
+.project-layout {
   display: grid;
-  grid-template-columns: 1fr 760px;
-  gap: 24px;
-  margin-top: 24px
+  grid-template-columns: 1fr clamp(360px, 30vw, 460px);
+  column-gap: 28px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+/* левая колонка: галерея (ряд 1) над характеристиками (ряд 2) */
+.project-layout > .gallery {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.project-main {
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
+}
+
+/* карточка покупки всегда «под рукой» — прилипает при скролле левой колонки */
+.project-aside {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  position: sticky;
+  top: 130px;
+  align-self: start;
 }
 
 .gallery__main {
@@ -270,19 +294,23 @@
   margin-bottom: 18px;
 }
 
+/* Чекбокс «слева в столбик», текст со ссылкой обтекает его одним абзацем —
+   иначе flex дробил «Я соглашаюсь на» и ссылку на отдельные узкие колонки */
 .buy-card__consent {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: flow-root;
   font-size: 13px;
+  line-height: 1.5;
   color: var(--gray);
   margin-bottom: 22px
 }
 
 .buy-card__consent input {
+  float: left;
   width: 18px;
   height: 18px;
-  accent-color: var(--orange)
+  margin: 2px 10px 0 0;
+  accent-color: var(--orange);
+  flex-shrink: 0
 }
 
 .buy-card__consent a {
@@ -311,17 +339,38 @@
   display: flex;
   justify-content: space-between;
   padding-left: 44px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
+.buy-card__tg:hover {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(42, 183, 224, 0.32);
+}
 
+.buy-card__tg:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(42, 183, 224, 0.28);
+}
 
-.buy-card__tg img{
+.buy-card__tg img {
   display: flex;
-  background: #EFF8FB;
+  background: #eff8fb;
   padding: 20px;
   border-radius: 50%;
+  transition: background 0.2s ease;
 }
 
+.buy-card__tg:hover img {
+  background: rgba(255, 255, 255, 0.22);
+}
 
 .buy-card__tg svg {
   width: 20px;
@@ -373,6 +422,108 @@
   font-size: 16px
 }
 
+/* ---------- Компактная карточка (узкая липкая колонка) ----------
+   Уменьшаем «гигантские» элементы: кнопки ~56px вместо ~90px и т.д. */
+.buy-card {
+  padding: 26px;
+}
+
+.buy-card__label {
+  text-align: left;
+}
+
+.buy-card__head {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.buy-card__price {
+  white-space: nowrap;
+}
+
+.buy-card__actions {
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.buy-card__actions .btn-primary {
+  min-height: 56px;
+  padding-right: 56px;
+}
+
+.buy-card__actions .btn-primary .btn-circle,
+.buy-card__actions .btn-present .btn-circle {
+  width: 42px;
+  height: 42px;
+}
+
+.btn-present {
+  min-height: 56px;
+  padding: 7px 7px 7px 24px;
+}
+
+.buy-card__hint {
+  margin: 16px 0 14px;
+}
+
+.buy-card .form-field {
+  min-height: 52px;
+  padding: 14px 20px;
+  margin-bottom: 12px;
+}
+
+.buy-card .btn-submit {
+  min-height: 56px;
+  padding: 6px 58px 6px 26px;
+  margin-bottom: 14px;
+}
+
+.buy-card .btn-submit .btn-circle {
+  width: 44px;
+  height: 44px;
+}
+
+.buy-card__consent {
+  margin-bottom: 18px;
+}
+
+.buy-card__row {
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.buy-card__tg {
+  min-height: 54px;
+  padding-left: 28px;
+}
+
+/* фиксированный размер кружка-иконки, чтобы он не «вылезал» за кнопку */
+.buy-card__tg img {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+}
+
+.buy-card__id {
+  min-height: 54px;
+}
+
+.buy-card__installment {
+  min-height: 58px;
+  max-width: none;
+  padding: 0 6px 0 22px;
+  margin-top: 12px;
+}
+
+.buy-card__installment .pct {
+  width: 44px;
+  height: 44px;
+}
+
 /* ---------- Характеристики проекта ---------- */
 .specs__head {
   display: flex;
@@ -392,7 +543,7 @@
 
 .specs-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
 }
 
@@ -404,7 +555,18 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  min-height: 170px
+  min-height: 170px;
+  border: 1px solid transparent;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.spec-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(28, 36, 64, 0.12);
+  border-color: var(--orange-soft-2);
 }
 
 .spec-card__icon {
@@ -415,7 +577,12 @@
   color: #fff;
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.spec-card:hover .spec-card__icon {
+  transform: scale(1.08);
 }
 
 .spec-card__icon svg {
@@ -511,7 +678,7 @@
 /* ---------- Карточки-ссылки ---------- */
 .project-links {
   display: grid;
-  grid-template-columns: repeat(3, 434px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px
 }
 
@@ -664,16 +831,39 @@
    АДАПТИВ
    ===================================================================== */
 @media(max-width:1200px) {
-  .project-top {
-    grid-template-columns: 1fr
-  }
-
   .specs-grid {
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(3, minmax(0, 1fr))
   }
 
   .project-links {
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+}
+
+/* Планшет/мобайл: одна колонка — галерея, затем карточка, затем характеристики */
+@media(max-width:900px) {
+  .project-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .project-layout > .gallery {
+    order: 1;
+    min-width: 0;
+  }
+
+  .project-aside {
+    position: static;
+    top: auto;
+    order: 2;
+    align-self: stretch; /* на мобильных карточка занимает всю ширину колонки */
+    min-width: 0;
+  }
+
+  .project-main {
+    order: 3;
   }
 }
 
@@ -696,20 +886,7 @@
     height: 18px
   }
 
-  /* ----- Верхний блок: карточка покупки переплетается с галереей -----
-     порядок по макету: имя → стоимость → цена → кнопки → галерея → форма */
-  .project-top {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 14px
-  }
-
-  .buy-card,
-  .buy-card__head {
-    display: contents
-  }
-
+  /* ----- Верхний блок: галерея, затем карточка покупки одним блоком ----- */
   .buy-card__title {
     order: 1;
     display: flex;
@@ -781,10 +958,6 @@
     display: none
   }
 
-  .gallery {
-    order: 5
-  }
-
   /* галерея: убираем стрелки, основное фото 362×300, мини-фото 115×75 со скроллом */
   .gallery__nav,
   .gallery__thumbs-nav {
@@ -840,7 +1013,9 @@
   }
 
   .buy-card__tg img {
-    padding: 13px
+    width: 40px;
+    height: 40px;
+    padding: 9px
   }
 
   .buy-card__id {
@@ -873,7 +1048,7 @@
   }
 
   .specs-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px
   }
 
@@ -958,7 +1133,8 @@
   /* ----- Карточки-ссылки ----- */
   .project-links {
     grid-template-columns: 1fr;
-    gap: 14px
+    gap: 14px;
+    margin-bottom: 36px;
   }
 
   .project-link {
@@ -1001,6 +1177,26 @@
   .complectation {
     padding: 28px 0px
   }
+
+  /* Карточка покупки не должна растягивать страницу шире экрана:
+     даём ей сжиматься и подгоняем цену/отступы под узкие экраны.
+     Селекторы с повышенной специфичностью — чтобы перекрыть правила
+     из блоков типографики (<=900px), идущих ниже по файлу. */
+  .project-aside {
+    min-width: 0;
+  }
+
+  .project-aside .buy-card {
+    min-width: 0;
+    max-width: 100%;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .project-aside .buy-card__price {
+    font-size: 24px;
+    white-space: normal;
+  }
 }
 
 /* =====================================================================
@@ -1016,7 +1212,7 @@
   .buy-card__price {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 35px
+    font-size: var(--fs-35)
   }
 
   /* «Стоимость строительства» — Inter Regular 16 */
@@ -1060,23 +1256,23 @@
   .buy-card__installment {
     font-family: 'Intel One Mono', monospace;
     font-weight: 600;
-    font-size: 16px;
-    min-height: 89px;
-    height: 89px;
+    font-size: 14px;
+    min-height: 54px;
+    height: 54px;
   }
 
   /* процент в блоке рассрочки — Intel One Mono SemiBold 27 */
   .buy-card__installment .pct {
     font-family: 'Intel One Mono', monospace;
     font-weight: 600;
-    font-size: 27px
+    font-size: var(--fs-27)
   }
 
   /* «Характеристики проекта», «Видео-визитка» — Inter Regular 50 */
   .section-title {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 50px
+    font-size: var(--fs-50)
   }
 
   /* тег типа дома «Хайтек» — Inter Regular 11.28 */
@@ -1097,21 +1293,21 @@
   .spec-card__value {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
-    font-size: 22px
+    font-size: var(--fs-22)
   }
 
   /* «Комплектация» — Inter Regular 50 */
   .complectation__title {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 50px
+    font-size: var(--fs-50)
   }
 
   /* «Холодный/Теплый контур» — Inter SemiBold 27 */
   .complectation__col-title {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 27px
+    font-size: var(--fs-27)
   }
 
   /* подзаголовки групп «Генплан участка» — Inter Bold 18 */
@@ -1132,7 +1328,7 @@
   .project-link__title {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 25px
+    font-size: var(--fs-25)
   }
 
   /* карточки-ссылки: текст — Inter Regular 15 */
@@ -1245,7 +1441,8 @@
   .spec-card__label {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    font-size: 18px
+    font-size: 18px;
+    text-align: center;
   }
 
   /* значение параметра — Inter Bold 22 */
@@ -1303,5 +1500,79 @@
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 15px
+  }
+}
+
+/* =====================================================================
+   Кнопка Telegram в узкой ячейке (моб.): текст + иконка должны помещаться,
+   иконка-кружок не «вылезает» за края. Идёт в самом конце файла, чтобы
+   перекрыть размеры из блоков типографики выше.
+   ===================================================================== */
+@media (max-width: 900px) {
+  .buy-card__tg,
+  .buy-card__id {
+    font-size: 14px;
+  }
+
+  .buy-card__tg {
+    gap: 6px;
+    padding-left: 12px;
+    padding-right: 8px;
+  }
+
+  .buy-card__tg img {
+    width: 34px;
+    height: 34px;
+    padding: 8px;
+  }
+}
+
+/* =====================================================================
+   Мобильная раскладка страницы проекта по макету:
+   название → «стоимость строительства» → цена → кнопки → ГАЛЕРЕЯ →
+   форма → телеграм/ID → рассрочка → характеристики.
+
+   Карточка покупки свёрстана как единый блок, а галерея лежит рядом с ней.
+   Чтобы галерея встала МЕЖДУ кнопками и формой (для этого в разметке уже
+   зарезервирован order:5), разворачиваем вложенность через display:contents —
+   тогда дочерние элементы карточки попадают в общий flex-поток .project-layout
+   и их order (1,2,3,4, 6,7,8,9) начинает работать вместе с галереей (5).
+   ===================================================================== */
+@media (max-width: 900px) {
+  .project-aside,
+  .buy-card,
+  .buy-card__head {
+    display: contents;
+  }
+
+  .project-layout {
+    gap: 0;
+  }
+
+  .project-layout > .gallery {
+    order: 5;
+    margin-top: 18px;
+  }
+
+  .project-main {
+    order: 10;
+    margin-top: 28px;
+  }
+
+  /* интервалы между раскрытыми блоками карточки */
+  .buy-card__title { margin-top: 6px; }
+  .buy-card__label { margin-top: 14px; }
+  .buy-card__price { margin-top: 2px; }
+  .buy-card__actions { margin-top: 16px; }
+  .buy-card__hint { margin: 18px 0 16px; }
+  .buy-card__row { margin-top: 0; }
+  .buy-card__installment { margin-top: 12px; }
+
+  /* «Заказать звонок» должно помещаться в одну строку на телефоне */
+  .buy-card__actions .btn-primary,
+  .buy-card__actions .btn-present {
+    font-size: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }

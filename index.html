@@ -16,7 +16,30 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=65" />
+    <link rel="icon" href="img/ui/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/styles.css?v=80" />
+    <script>
+      /* Режим «как на 1920, но в масштабе»: для ширин 1301–1919px страница
+         показывается ровно как на 1920px и пропорционально ужимается (zoom),
+         как при уменьшении масштаба в браузере. */
+      (function () {
+        function applyZoomFit() {
+          var d = document.documentElement;
+          var iw = window.innerWidth;
+          if (iw > 1300 && iw < 1920) {
+            d.classList.add("zoomfit");
+            d.style.zoom = (d.clientWidth || iw) / 1920;
+          } else {
+            d.classList.remove("zoomfit");
+            d.style.zoom = "";
+          }
+        }
+        applyZoomFit();
+        window.addEventListener("resize", applyZoomFit);
+        document.addEventListener("DOMContentLoaded", applyZoomFit);
+        window.addEventListener("load", applyZoomFit);
+      })();
+    </script>
   </head>
   <body>
     <!-- ===================== ШАПКА ===================== -->
@@ -62,7 +85,13 @@
           /></a>
         </div>
         <a href="tel:+74952560054" class="header__phone">+7 (495) 256-00-54</a>
-        <button class="btn-outline" data-modal-open>
+        <button
+          class="btn-outline"
+          data-modal-open
+          data-modal-title="Скачать каталог в PDF"
+          data-modal-text="Оставьте контакты — пришлём каталог проектов в PDF."
+          data-modal-nocomment
+        >
           Скачать каталог в PDF<img src="img/icons/download.svg" alt="" />
         </button>
       </div>
@@ -165,10 +194,7 @@
             <img src="img/ui/search.svg" alt="" />
             <input type="text" placeholder="Поиск по названию проекта..." />
           </label>
-          <button class="filter-btn">
-            <span class="filter-btn__label">Фильтры</span
-            ><img src="img/ui/filter.svg" alt="" />
-          </button>
+          <!-- Кнопка «Фильтры» временно скрыта: фильтр ещё не отрисован дизайнером -->
         </div>
 
         <div class="projects-grid" id="projectsGrid">
@@ -487,56 +513,13 @@
             </div>
           </div>
         </div>
-        <div class="examples-grid">
-          <div class="example-card">
-            <img src="img/projects/mansion.jpg" alt="Дом «Янино»" />
-            <div class="example-card__chips">
-              <span class="chip"
-                ><span class="dot" style="background: var(--gold)"></span>118
-                м²</span
-              ><span class="chip"
-                ><span class="dot" style="background: var(--cyan)"></span>3
-                спальни</span
-              ><span class="chip"
-                ><span class="dot" style="background: var(--orange)"></span>2
-                санузла</span
-              >
-            </div>
-            <h3 class="example-card__name">Янино</h3>
-          </div>
-          <div class="example-card">
-            <img src="img/projects/sloboda.jpg" alt="Дом «Солнечное»" />
-            <div class="example-card__chips">
-              <span class="chip"
-                ><span class="dot" style="background: var(--gold)"></span>118
-                м²</span
-              ><span class="chip"
-                ><span class="dot" style="background: var(--cyan)"></span>3
-                спальни</span
-              ><span class="chip"
-                ><span class="dot" style="background: var(--orange)"></span>2
-                санузла</span
-              >
-            </div>
-            <h3 class="example-card__name">Солнечное</h3>
-          </div>
-          <div class="example-card">
-            <img src="img/projects/astro.jpg" alt="Дом «Юкковское»" />
-            <div class="example-card__chips">
-              <span class="chip"
-                ><span class="dot" style="background: var(--gold)"></span>118
-                м²</span
-              ><span class="chip"
-                ><span class="dot" style="background: var(--cyan)"></span>3
-                спальни</span
-              ><span class="chip"
-                ><span class="dot" style="background: var(--orange)"></span>2
-                санузла</span
-              >
-            </div>
-            <h3 class="example-card__name">Юкковское</h3>
-          </div>
-        </div>
+        <!-- Реальные проекты из каталога (заполняется в main.js).
+             Какие показывать — задаётся в data-featured (id из houses-data.js). -->
+        <div
+          class="examples-grid"
+          id="examplesGrid"
+          data-featured="kalipso,solnechnogorsk,astro"
+        ></div>
       </section>
 
       <!-- ===================== ИНДИВИДУАЛЬНОЕ ПРОЕКТИРОВАНИЕ ===================== -->
@@ -1201,6 +1184,13 @@
 
     <!-- ===================== ПЛАВАЮЩАЯ КНОПКА ОПРОСА ===================== -->
     <a class="quiz-fab" href="quiz.html" aria-label="Пройти опрос">
+      <span
+        class="quiz-fab__close"
+        role="button"
+        tabindex="0"
+        aria-label="Скрыть опрос"
+        >&times;</span
+      >
       <span class="quiz-fab__icon">
         <img src="img/icons/survey.svg" alt="Иконка опроса" />
       </span>
@@ -1250,6 +1240,6 @@
     </div>
 
     <script src="js/houses-data.js?v=8"></script>
-    <script src="js/main.js?v=18"></script>
+    <script src="js/main.js?v=25"></script>
   </body>
 </html>

@@ -14,7 +14,30 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=65" />
+    <link rel="icon" href="img/ui/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/styles.css?v=80" />
+    <script>
+      /* Режим «как на 1920, но в масштабе»: для ширин 1301–1919px страница
+         показывается ровно как на 1920px и пропорционально ужимается (zoom),
+         как при уменьшении масштаба в браузере. */
+      (function () {
+        function applyZoomFit() {
+          var d = document.documentElement;
+          var iw = window.innerWidth;
+          if (iw > 1300 && iw < 1920) {
+            d.classList.add("zoomfit");
+            d.style.zoom = (d.clientWidth || iw) / 1920;
+          } else {
+            d.classList.remove("zoomfit");
+            d.style.zoom = "";
+          }
+        }
+        applyZoomFit();
+        window.addEventListener("resize", applyZoomFit);
+        document.addEventListener("DOMContentLoaded", applyZoomFit);
+        window.addEventListener("load", applyZoomFit);
+      })();
+    </script>
   </head>
   <body>
     <!-- ===================== ШАПКА ===================== -->
@@ -60,7 +83,13 @@
           /></a>
         </div>
         <span class="header__phone">+7 (495) 256-00-54</span>
-        <button class="btn-outline" data-modal-open>
+        <button
+          class="btn-outline"
+          data-modal-open
+          data-modal-title="Скачать каталог в PDF"
+          data-modal-text="Оставьте контакты — пришлём каталог проектов в PDF."
+          data-modal-nocomment
+        >
           Скачать каталог в PDF<img src="img/icons/download.svg" alt="" />
         </button>
       </div>
@@ -193,7 +222,7 @@
         <!-- Контакты -->
         <div class="quiz-panel quiz-panel--final">
           <div class="quiz-channels">
-            <button class="quiz-channel quiz-channel-tg" type="button">
+            <button class="quiz-channel quiz-channel-tg is-selected" type="button">
               <img src="img/icons/telegram.svg" alt="" />Telegram
             </button>
             <button class="quiz-channel quiz-channel-max" type="button">
@@ -212,12 +241,18 @@
                 <input class="quiz-field" type="text" required />
               </div>
               <div class="quiz-form__row">
+                <span class="quiz-form__label">Ваш номер</span>
                 <input
                   class="quiz-field"
                   type="tel"
                   placeholder="+7 (___) ___-__-__"
                   required
                 />
+              </div>
+              <!-- Появляется при выборе Telegram, прячется при выборе МАКС -->
+              <div class="quiz-form__row quiz-tg-row">
+                <span class="quiz-form__label">Ваш ник в Telegram</span>
+                <input class="quiz-field" type="text" placeholder="@username" />
               </div>
               <div class="quiz-form__row">
                 <span class="quiz-form__label"
@@ -239,49 +274,6 @@
           </div>
         </div>
 
-        <!-- Спасибо -->
-        <div class="quiz-panel quiz-panel--thanks">
-          <h3 class="quiz-final__title">Спасибо за заявку!</h3>
-          <p class="quiz-final__text">
-            Наш менеджер свяжется с вами в ближайшее время. А пока вы можете
-            посмотреть наш сайт и контент в социальных сетях
-          </p>
-          <div class="quiz-socials">
-            <a href="#" class="quiz-social quiz-social--site"
-              ><span class="quiz-social__ic"
-                ><img src="img/icons/globe.svg" alt="" /></span
-              ><p>Наш сайт</p></a
-            >
-            <a href="#" class="quiz-social quiz-social--dzen"
-              ><span class="quiz-social__ic"
-                ><img src="img/icons/zen.svg" alt="" /></span
-              ><p>Дзен</p></a
-            >
-            <a href="#" class="quiz-social quiz-social--vk"
-              ><span class="quiz-social__ic"
-                ><img src="img/icons/vk-blue.svg" alt="" /></span
-              ><p>Вконтакте</p></a
-            >
-            <a href="#" class="quiz-social quiz-social--tg"
-              ><span class="quiz-social__ic"
-                ><img src="img/icons/telegram.svg" alt="" /></span
-              ><p>Telegram</p></a
-            >
-            <a href="#" class="quiz-social quiz-social--max"
-              ><span class="quiz-social__ic"
-                ><img src="img/icons/max-blue.svg" alt="" /></span
-              ><p>Макс</p></a
-            >
-            <a href="#" class="quiz-social quiz-social--ok"
-              ><span class="quiz-social__ic"
-                ><img src="img/icons/instagram.svg" alt="" /></span
-              ><p>Instagram</p></a
-            >
-          </div>
-          <p class="quiz-disclaimer">
-            *Компания Meta Platforms Inc., владеющая социальными сетями Facebook и Instagram, по решению суда от 21.03.2022 признана экстремистской организацией, ее деятельность на территории России запрещена.
-          </p>
-        </div>
       </div>
     </main>
 
@@ -366,6 +358,6 @@
       </div>
     </footer>
 
-    <script src="js/main.js?v=18"></script>
+    <script src="js/main.js?v=25"></script>
   </body>
 </html>

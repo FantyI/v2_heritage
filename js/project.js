@@ -7,7 +7,8 @@
   'use strict';
 
   var params = new URLSearchParams(window.location.search);
-  var id = params.get('id');
+  // id берём из ?id=… либо из data-project-id (статические страницы /proekty/<id>.html)
+  var id = params.get('id') || document.documentElement.getAttribute('data-project-id');
 
   if (typeof HOUSES === 'undefined') return;
 

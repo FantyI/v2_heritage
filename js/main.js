@@ -4,12 +4,43 @@
 (function () {
   'use strict';
 
+  /* ---------- Тост-уведомление ---------- */
+  function showToast(message, autoHideMs) {
+    var toast = document.createElement('div');
+    toast.className = 'quiz-toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    requestAnimationFrame(function () { toast.classList.add('is-visible'); });
+    if (autoHideMs) {
+      setTimeout(function () {
+        toast.classList.remove('is-visible');
+        setTimeout(function () { toast.remove(); }, 300);
+      }, autoHideMs);
+    }
+    return toast;
+  }
+
+  /* после отправки заявки в опросе нас перекидывает на главную —
+     здесь показываем всплывающее уведомление уже на новой странице */
+  try {
+    if (sessionStorage.getItem('quizLeadSent')) {
+      sessionStorage.removeItem('quizLeadSent');
+      showToast('Заявка отправлена! Менеджер свяжется с вами в ближайшее время.', 3000);
+    }
+  } catch (e) {}
+
   /* ---------- Аккордеон вопросов (FAQ) ---------- */
-  document.querySelectorAll('.faq-item').forEach(function (item) {
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function (item) {
     var question = item.querySelector('.faq-item__q');
     if (!question) return;
     question.addEventListener('click', function () {
-      item.classList.toggle('is-open');
+      var willOpen = !item.classList.contains('is-open');
+      // закрываем остальные — открытым может быть только один вопрос
+      faqItems.forEach(function (other) {
+        if (other !== item) other.classList.remove('is-open');
+      });
+      item.classList.toggle('is-open', willOpen);
     });
   });
 
@@ -84,7 +115,7 @@
     function buildProjectCard(h) {
       var card = document.createElement('a');
       card.className = 'project-card';
-      card.setAttribute('href', 'project.html?id=' + encodeURIComponent(h.id));
+      card.setAttribute('href', 'proekty/' + encodeURIComponent(h.id) + '.html');
 
       var media = document.createElement('div');
       media.className = 'project-card__media';
@@ -181,6 +212,58 @@
     applyView();
   }
 
+  /* ---------- Примеры готовых домов: реальные проекты из каталога ---------- */
+  var examplesGrid = document.getElementById('examplesGrid');
+  if (examplesGrid && typeof HOUSES !== 'undefined' && Array.isArray(HOUSES)) {
+    var featuredIds = (examplesGrid.getAttribute('data-featured') || '')
+      .split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+    var featured = [];
+    featuredIds.forEach(function (id) {
+      var h = HOUSES.filter(function (x) { return x.id === id; })[0];
+      if (h) featured.push(h);
+    });
+    if (!featured.length) featured = HOUSES.slice(0, 3);
+    featured = featured.slice(0, 3);
+
+    examplesGrid.innerHTML = '';
+    featured.forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'example-card';
+      a.setAttribute('href', 'proekty/' + encodeURIComponent(h.id) + '.html');
+
+      var img = document.createElement('img');
+      img.setAttribute('src', (h.images && h.images[0]) || '');
+      img.setAttribute('alt', 'Проект «' + h.name + '»');
+      a.appendChild(img);
+
+      var chips = document.createElement('div');
+      chips.className = 'example-card__chips';
+      [
+        { color: 'var(--gold)',   text: h.area },
+        { color: 'var(--cyan)',   text: h.rooms ? h.rooms + ' комн.' : '' },
+        { color: 'var(--orange)', text: h.bathrooms ? h.bathrooms + ' с/у' : '' }
+      ].forEach(function (c) {
+        if (!c.text) return;
+        var chip = document.createElement('span');
+        chip.className = 'chip';
+        var dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.style.background = c.color;
+        chip.appendChild(dot);
+        chip.appendChild(document.createTextNode(c.text));
+        chips.appendChild(chip);
+      });
+      a.appendChild(chips);
+
+      var name = document.createElement('h3');
+      name.className = 'example-card__name';
+      name.textContent = h.name;
+      a.appendChild(name);
+
+      examplesGrid.appendChild(a);
+    });
+  }
+
   /* ---------- Маска телефона для полей type="tel" ---------- */
   function formatPhone(raw) {
     var d = raw.replace(/\D/g, '');
@@ -226,17 +309,26 @@
   function bindSlider(trackId, prevSel, nextSel) {
     var track = document.getElementById(trackId);
     if (!track) return;
-    function amount() {
-      var first = track.children[0];
-      if (!first) return 320;
-      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
-      return first.getBoundingClientRect().width + gap;
+    /* Шаг прокрутки = одна карточка. Считаем не от текущего scrollLeft,
+       а от позиции самих карточек — так шаг не «уплывает» и следующее
+       видео всегда встаёт ровно в кадр (без обрезанного края). */
+    function step(dir) {
+      var items = track.children;
+      if (!items.length) return;
+      var base = items[0].offsetLeft; /* учитываем внутренние отступы трека */
+      var stepW = items.length > 1
+        ? items[1].offsetLeft - items[0].offsetLeft
+        : items[0].getBoundingClientRect().width;
+      if (!stepW) return;
+      var idx = Math.round((track.scrollLeft) / stepW);
+      idx = Math.max(0, Math.min(items.length - 1, idx + dir));
+      animateScroll(track, items[idx].offsetLeft - base);
     }
     document.querySelectorAll(nextSel).forEach(function (b) {
-      b.addEventListener('click', function () { animateScroll(track, track.scrollLeft + amount()); });
+      b.addEventListener('click', function () { step(1); });
     });
     document.querySelectorAll(prevSel).forEach(function (b) {
-      b.addEventListener('click', function () { animateScroll(track, track.scrollLeft - amount()); });
+      b.addEventListener('click', function () { step(-1); });
     });
   }
   bindSlider('reelsTrack', '[data-reels-prev]', '[data-reels-next]');
@@ -267,12 +359,26 @@
     });
   })();
 
-  /* ---------- Плавающая кнопка опроса: свайп-скрытие на мобилке ---------- */
+  /* ---------- Плавающая кнопка опроса: скрытие (крестик/свайп) на любом экране ---------- */
   (function () {
     var fab = document.querySelector('.quiz-fab');
     if (!fab) return;
-    var mq = window.matchMedia('(max-width: 600px)');
     var startX = 0, startY = 0, moved = false;
+
+    /* крестик — спрятать опрос (работает на всех устройствах) */
+    var closeBtn = fab.querySelector('.quiz-fab__close');
+    function collapse(e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      fab.classList.add('is-collapsed');
+    }
+    if (closeBtn) {
+      closeBtn.addEventListener('click', collapse);
+      closeBtn.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') collapse(e);
+      });
+    }
+
+    /* свайп вправо прячет, влево — возвращает (тач) */
     fab.addEventListener('touchstart', function (e) {
       var t = e.touches[0];
       startX = t.clientX;
@@ -287,19 +393,17 @@
       if (dx > 24) fab.classList.add('is-collapsed');
       else if (dx < -24) fab.classList.remove('is-collapsed');
     }, { passive: true });
+
+    /* клик: если свёрнут — раскрываем (а не переходим); был свайп — не переходим */
     fab.addEventListener('click', function (e) {
-      if (!mq.matches) return;                         // десктоп — обычная ссылка
       var wasMoved = moved;
       moved = false;
-      if (wasMoved) { e.preventDefault(); return; }    // был свайп — не переходим
-      if (fab.classList.contains('is-collapsed')) {    // тап по торчащей части — раскрыть
+      if (fab.classList.contains('is-collapsed')) {
         e.preventDefault();
         fab.classList.remove('is-collapsed');
+        return;
       }
-    });
-    // при возврате к десктопу сбрасываем свёрнутое состояние
-    mq.addEventListener('change', function () {
-      if (!mq.matches) { fab.classList.remove('is-collapsed'); moved = false; }
+      if (wasMoved) e.preventDefault();
     });
   })();
 
@@ -356,12 +460,70 @@
     });
   }
 
-  /* ---------- Заглушка отправки форм ---------- */
+  /* ---------- Окно «Спасибо за заявку» (открывается при отправке заявки) ---------- */
+  function socialBtn(mod, href, label, icon) {
+    return '<a class="lt-soc lt-soc--' + mod + '" href="' + href + '"' +
+      (href === '#' ? '' : ' target="_blank" rel="noopener"') + '>' +
+      '<span class="lt-soc__ic"><img src="' + icon + '" alt="" /></span>' +
+      '<span class="lt-soc__label">' + label + '</span></a>';
+  }
+
+  function showLeadThanks() {
+    var ov = document.createElement('div');
+    ov.className = 'lead-thanks';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-label', 'Заявка отправлена');
+    ov.innerHTML =
+      '<div class="lead-thanks__box lead-thanks__box--social">' +
+      '<button type="button" class="lead-thanks__close" aria-label="Закрыть">&times;</button>' +
+      '<div class="lead-thanks__ic"><svg viewBox="0 0 24 24" fill="none">' +
+      '<path d="M4 12.5l5 5 11-11" stroke="currentColor" stroke-width="2.4" ' +
+      'stroke-linecap="round" stroke-linejoin="round"/></svg></div>' +
+      '<h3 class="lead-thanks__title">Спасибо за заявку!</h3>' +
+      '<p class="lead-thanks__text">Наш менеджер свяжется с вами в ближайшее время. ' +
+      'А пока вы можете посмотреть наш сайт и контент в социальных сетях.</p>' +
+      '<div class="lead-thanks__socials">' +
+      socialBtn('site', '#', 'Наш сайт', 'img/icons/globe.svg') +
+      socialBtn('zen', '#', 'Дзен', 'img/icons/zen.svg') +
+      socialBtn('vk', '#', 'Вконтакте', 'img/icons/vk-blue.svg') +
+      socialBtn('tg', '#', 'Telegram', 'img/icons/telegram.svg') +
+      socialBtn('max', '#', 'Макс', 'img/icons/max-blue.svg') +
+      socialBtn('inst', '#', 'Instagram', 'img/icons/instagram.svg') +
+      '</div>' +
+      '<p class="lead-thanks__note">*Компания Meta Platforms Inc., владеющая социальными сетями ' +
+      'Facebook и Instagram, по решению суда от 21.03.2022 признана экстремистской организацией, ' +
+      'ее деятельность на территории России запрещена.</p>' +
+      '</div>';
+    document.body.appendChild(ov);
+    document.body.style.overflow = 'hidden';
+
+    function close() {
+      ov.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(function () { if (ov.parentNode) ov.parentNode.removeChild(ov); }, 250);
+      document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    ov.querySelector('.lead-thanks__close').addEventListener('click', close);
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    document.addEventListener('keydown', onKey);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { ov.classList.add('is-open'); });
+    });
+  }
+
+  /* ---------- Отправка форм-заявок ---------- */
   document.querySelectorAll('form[data-lead-form]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       form.reset();
-      alert('Спасибо за заявку! Наш менеджер свяжется с вами в ближайшее время.');
+      // если форма внутри модального окна — сначала закрываем модалку
+      var m = form.closest('.modal');
+      if (m) {
+        m.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+      showLeadThanks();
     });
   });
 
@@ -507,20 +669,33 @@
     });
   });
 
-  /* выбор канала связи (Telegram / МАКС) */
+  /* выбор канала связи (Telegram / МАКС) — для Telegram показываем поле «ник»
+     и делаем его обязательным; для МАКС поле прячется и не требуется */
+  var tgRow = quiz.querySelector('.quiz-tg-row');
+  var tgInput = tgRow ? tgRow.querySelector('input') : null;
+  function selectChannel(ch) {
+    quiz.querySelectorAll('.quiz-channel').forEach(function (c) { c.classList.remove('is-selected'); });
+    ch.classList.add('is-selected');
+    var isTg = ch.classList.contains('quiz-channel-tg');
+    if (tgRow) tgRow.hidden = !isTg;
+    if (tgInput) tgInput.required = isTg;
+  }
   quiz.querySelectorAll('.quiz-channel').forEach(function (ch) {
-    ch.addEventListener('click', function () {
-      quiz.querySelectorAll('.quiz-channel').forEach(function (c) { c.classList.remove('is-selected'); });
-      ch.classList.add('is-selected');
-    });
+    ch.addEventListener('click', function () { selectChannel(ch); });
   });
+  /* начальное состояние по выбранному по умолчанию каналу */
+  var preselected = quiz.querySelector('.quiz-channel.is-selected') || quiz.querySelector('.quiz-channel');
+  if (preselected) selectChannel(preselected);
 
-  /* отправка контактов -> экран «Спасибо» */
+  /* отправка контактов -> сразу переходим на главную, где покажем уведомление */
   var form = quiz.querySelector('[data-quiz-form]');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      showPanel(panels.length - 1);
+      var submitBtn = form.querySelector('[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      try { sessionStorage.setItem('quizLeadSent', '1'); } catch (err) {}
+      window.location.href = 'index.html';
     });
   }
 
