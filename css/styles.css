@@ -282,7 +282,6 @@ body {
 }
 
 .btn-primary--sm {
-  min-height: 66px;
   font-size: 15px;
   padding-left: 28px;
   gap: 14px;
@@ -349,7 +348,7 @@ body {
   background: #fff;
   color: var(--orange);
   border-radius: var(--radius-pill);
-  min-height: 89px;
+  min-height: 78px;
   padding: 0 14px 0 26px;
   display: inline-flex;
   align-items: center;
@@ -364,8 +363,8 @@ body {
 }
 
 .btn-light .ar {
-  width: 69px;
-  height: 69px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: var(--orange);
   display: flex;
@@ -418,12 +417,21 @@ body {
   top: 12px;
   z-index: 90;
   transition:
-    box-shadow 0.25s ease,
-    top 0.25s ease;
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.35s ease;
 }
 
 .header.is-stuck {
   box-shadow: 0 14px 34px rgba(28, 36, 64, 0.14);
+}
+
+/* На планшете и телефоне у закреплённой шапки появляются внутренние боковые отступы */
+@media (max-width: 900px) {
+  .header.is-stuck {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
 }
 
 .logo {
@@ -875,6 +883,7 @@ body {
   font-weight: 700;
   font-size: 16px;
   border-radius: var(--radius-pill);
+  border: 1px solid var(--orange);
   padding: 0 42px;
   min-height: 62px;
   transition: background 0.2s;
@@ -1018,7 +1027,7 @@ select.form-field {
   background: var(--orange);
   color: #fff;
   border-radius: var(--radius-pill);
-  min-height: 89px;
+  min-height: 78px;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -1051,10 +1060,6 @@ select.form-field {
 
 .btn-primary {
   padding-right: 78px;
-}
-
-.btn-primary--sm {
-  padding-right: 66px;
 }
 
 .btn-submit {
@@ -1629,7 +1634,6 @@ select.form-field {
   position: relative;
   z-index: 2;
 }
-
 
 .step-card__icon--cta {
   position: static;
@@ -2239,6 +2243,8 @@ select.form-field {
   margin-top: 36px;
   position: relative;
   overflow: hidden;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 .footer::before {
@@ -2790,7 +2796,8 @@ select.form-field {
 
   /* ===== ШАПКА: слева бургер (2 полоски), по центру лого, справа Max ===== */
   .header {
-    position: relative;
+    position: sticky;
+    top: 12px;
     flex-wrap: nowrap;
     justify-content: space-between;
     min-height: 70px;
@@ -4094,11 +4101,11 @@ html.zoomfit .project-layout {
   z-index: 80;
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 13px;
   background: var(--orange-soft);
   border: 1px solid var(--orange);
   border-radius: 14px 0 0 14px;
-  padding: 11px 16px 11px 11px;
+  padding: 13px 19px 13px 13px;
   box-shadow: 0 12px 28px rgba(28, 36, 64, 0.22);
   text-align: left;
   transition:
@@ -4112,9 +4119,9 @@ html.zoomfit .project-layout {
 }
 
 .quiz-fab__icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   background: var(--orange);
   color: var(--gold);
   display: flex;
@@ -4124,8 +4131,8 @@ html.zoomfit .project-layout {
 }
 
 .quiz-fab__icon svg {
-  width: 18px;
-  height: 18px;
+  width: 21px;
+  height: 21px;
 }
 
 .quiz-fab__body {
@@ -4136,7 +4143,7 @@ html.zoomfit .project-layout {
 
 .quiz-fab__label {
   color: #000;
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -4145,7 +4152,7 @@ html.zoomfit .project-layout {
 .quiz-fab__title {
   color: var(--orange);
   font-weight: 600;
-  font-size: 11.5px;
+  font-size: 13px;
   line-height: 1.25;
 }
 
@@ -4191,13 +4198,12 @@ html.zoomfit .project-layout {
 
 /* свёрнутый опрос — торчит только иконка (на любой ширине), клик возвращает */
 .quiz-fab.is-collapsed {
-  transform: translateX(calc(100% - 46px));
+  transform: translateX(calc(100% - 54px));
 }
 
 .quiz-fab.is-collapsed .quiz-fab__close {
   display: none;
 }
-
 
 /* ---------- Оверлей и окно ---------- */
 .quiz {
@@ -4700,39 +4706,37 @@ html.zoomfit .project-layout {
     font-size: 26px;
   }
 
-  
-
   .quiz-fab {
-    gap: 9px;
-    padding: 10px 14px 10px 10px;
+    gap: 11px;
+    padding: 12px 17px 12px 12px;
     border-radius: 16px 0 0 16px;
     box-shadow: 0 10px 26px rgba(28, 36, 64, 0.28);
   }
 
   .quiz-fab__icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 9px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
   }
 
   .quiz-fab__icon svg,
   .quiz-fab__icon img {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
   }
 
   .quiz-fab__label {
-    font-size: 12px;
+    font-size: 13.5px;
     letter-spacing: 0.1em;
   }
 
   .quiz-fab__title {
-    font-size: 11px;
+    font-size: 12.5px;
   }
 
   /* свайпом вправо прячется, торчит иконка */
   .quiz-fab.is-collapsed {
-    transform: translateX(calc(100% - 48px));
+    transform: translateX(calc(100% - 56px));
   }
 }
 /* ---------- Квиз как отдельная страница (/quiz) ---------- */
@@ -4865,7 +4869,10 @@ html.zoomfit .project-layout {
   border-radius: 999px;
   padding: 0 22px;
   color: #fff;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    opacity 0.18s ease;
 }
 
 .lt-soc:hover {
@@ -4902,11 +4909,21 @@ html.zoomfit .project-layout {
   padding: 0 24px;
 }
 
-.lt-soc--site { background: #ff4d00; }
-.lt-soc--zen { background: #2b2b2b; }
-.lt-soc--vk { background: #0077ff; }
-.lt-soc--tg { background: #29a9eb; }
-.lt-soc--max { background: #0c4cff; }
+.lt-soc--site {
+  background: #ff4d00;
+}
+.lt-soc--zen {
+  background: #2b2b2b;
+}
+.lt-soc--vk {
+  background: #0077ff;
+}
+.lt-soc--tg {
+  background: #29a9eb;
+}
+.lt-soc--max {
+  background: #0c4cff;
+}
 .lt-soc--inst {
   background: linear-gradient(90deg, #d6276e, #e1306c);
 }
@@ -4950,7 +4967,9 @@ html.zoomfit .project-layout {
   box-shadow: 0 18px 48px rgba(28, 36, 64, 0.16);
   transform: translateY(140%);
   opacity: 0;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
 }
 
 .cookie-banner.is-visible {
