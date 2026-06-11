@@ -328,6 +328,8 @@ body {
   font-size: 13px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition:
     background 0.2s,
     color 0.2s;
@@ -459,6 +461,7 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
   transition: color 0.2s;
 }
 
@@ -2239,12 +2242,25 @@ select.form-field {
   background: var(--dark);
   border-radius: 0;
   color: #fff;
-  padding: 64px 70px 40px;
+  /* Фон тянем до краёв body (гасим его боковой padding), контент возвращаем
+     по сетке тем же var(--gutter). Без vw — иначе ломается под zoom-хаком 1300–1920px. */
+  padding: 64px var(--gutter) 40px;
   margin-top: 36px;
   position: relative;
   overflow: hidden;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  margin-left: calc(var(--gutter) * -1);
+  margin-right: calc(var(--gutter) * -1);
+}
+
+/* На экранах ≥1920px (zoom-хак уже не активен) фон футера тянем до краёв
+   вьюпорта через vw, контент остаётся по сетке. */
+@media (min-width: 1920px) {
+  .footer {
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
 }
 
 .footer::before {
@@ -2479,13 +2495,6 @@ select.form-field {
 /* =====================================================================
    АДАПТИВ
    ===================================================================== */
-@media (max-width: 1920px){
-  .footer{
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
 @media (min-width: 601px) and (max-width: 1500px) {
   html:not(.zoomfit) .reel {
     flex-basis: calc((100% - 72px) / 4);
@@ -2583,9 +2592,27 @@ select.form-field {
     min-height: 440px;
   }
 
-  .why-grid,
   .steps-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* ПОЧЕМУ ГАЗОБЕТОН: карточки в строку со скроллом уже на планшетах */
+  .why-grid {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .why-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .feature-card {
+    flex: 0 0 calc((100% - 32px) / 3);
+    scroll-snap-align: start;
   }
 
   .footer__top {
@@ -2744,7 +2771,7 @@ select.form-field {
   /* единый белый фон */
   body {
     background: #fff;
-    padding: 0 33px;
+    padding: 0 16px;
   }
 
   .section {
@@ -4181,7 +4208,6 @@ html.zoomfit .project-layout {
   font-size: 15px;
   line-height: 1;
   cursor: pointer;
-  opacity: 0;
   transform: scale(0.8);
   transition:
     opacity 0.18s,
@@ -4209,6 +4235,14 @@ html.zoomfit .project-layout {
 }
 
 .quiz-fab.is-collapsed .quiz-fab__close {
+  display: none;
+}
+
+/* ---------- Мобильная панель (опрос + мессенджеры) и кнопка «наверх» ----------
+   На ПК скрыты — там обычная плавающая кнопка «Опрос». Стили самой панели
+   и её элементов лежат ниже, в медиа-запросе @media (max-width: 600px). */
+.fab-row,
+.fab-totop {
   display: none;
 }
 
@@ -4713,37 +4747,92 @@ html.zoomfit .project-layout {
     font-size: 26px;
   }
 
+  /* на мобайле обычная кнопка опроса скрыта — вместо неё тёмная панель снизу */
   .quiz-fab {
-    gap: 11px;
-    padding: 12px 17px 12px 12px;
-    border-radius: 16px 0 0 16px;
-    box-shadow: 0 10px 26px rgba(28, 36, 64, 0.28);
+    display: none;
   }
 
-  .quiz-fab__icon {
+  /* тёмная панель снизу: иконка опроса + мессенджеры + кнопка-призыв.
+     Ширину ограничиваем, оставляя справа место под кнопку «наверх» (54px). */
+  .fab-row {
+    display: flex;
+    position: fixed;
+    left: 10px;
+    bottom: 24px;
+    z-index: 80;
+    max-width: calc(100vw - 70px);
+    align-items: center;
+    gap: 6px;
+    background: #20242e;
+    padding: 10px;
+    border-radius: 16px 16px 0 0 ;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .fab-row__quiz,
+  .social-fab__btn {
     width: 38px;
     height: 38px;
-    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
   }
 
-  .quiz-fab__icon svg,
-  .quiz-fab__icon img {
+  .fab-row__quiz {
+    background: var(--orange);
+  }
+
+  .social-fab__btn {
+    background: #fff;
+  }
+
+  .fab-row__quiz img,
+  .social-fab__btn img {
     width: 22px;
     height: 22px;
   }
 
-  .quiz-fab__label {
-    font-size: 13.5px;
-    letter-spacing: 0.1em;
+  /* контурная кнопка «рассчитать проект» — при нехватке места текст усекается */
+  .fab-cta {
+    min-width: 0;
+    height: 38px;
+    line-height: 36px;
+    padding: 0 9px;
+    border: 1px solid var(--orange);
+    border-radius: 11px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .quiz-fab__title {
-    font-size: 12.5px;
+  /* круглая кнопка «наверх» справа */
+  .fab-totop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 10px;
+    bottom: 31px;
+    z-index: 80;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--orange);
+    color: #fff;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
   }
 
-  /* свайпом вправо прячется, торчит иконка */
-  .quiz-fab.is-collapsed {
-    transform: translateX(calc(100% - 56px));
+  .fab-totop svg {
+    width: 21px;
+    height: 21px;
   }
 }
 /* ---------- Квиз как отдельная страница (/quiz) ---------- */

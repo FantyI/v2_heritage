@@ -407,6 +407,68 @@
     });
   })();
 
+  /* ---------- Мобильная панель: опрос + мессенджеры + кнопка «наверх» ---------- */
+  (function () {
+    if (document.querySelector('.fab-row')) return;
+    var fab = document.querySelector('.quiz-fab');
+    var quizHref = fab ? fab.getAttribute('href') : 'quiz.html';
+
+    /* ССЫЛКИ: замените '#' на реальные адреса каналов */
+    var CHANNELS = [
+      { name: 'Telegram', icon: 'img/icons/telegram.svg', href: '#' },
+      { name: 'МАКС',     icon: 'img/icons/max.svg',      href: '#' }
+    ];
+
+    var row = document.createElement('div');
+    row.className = 'fab-row';
+
+    /* 1. оранжевая иконка опроса (ведёт на квиз) */
+    var quizIcon = document.createElement('a');
+    quizIcon.className = 'fab-row__quiz';
+    quizIcon.href = quizHref;
+    quizIcon.setAttribute('aria-label', 'Пройти опрос');
+    quizIcon.innerHTML = '<img src="img/icons/survey.svg" alt="">';
+    row.appendChild(quizIcon);
+
+    /* 2. мессенджеры */
+    CHANNELS.forEach(function (c) {
+      var a = document.createElement('a');
+      a.className = 'social-fab__btn';
+      a.href = c.href;
+      a.setAttribute('aria-label', c.name);
+      /* внешнюю вкладку открываем только для настоящих ссылок */
+      if (/^https?:/i.test(c.href)) { a.target = '_blank'; a.rel = 'noopener'; }
+      var img = document.createElement('img');
+      img.src = c.icon;
+      img.alt = c.name;
+      a.appendChild(img);
+      row.appendChild(a);
+    });
+
+    /* 3. контурная кнопка-призыв */
+    var cta = document.createElement('a');
+    cta.className = 'fab-cta';
+    cta.href = quizHref;
+    cta.textContent = 'рассчитать проект';
+    row.appendChild(cta);
+
+    document.body.appendChild(row);
+
+    /* кнопка «наверх» — отдельно справа */
+    var toTop = document.createElement('button');
+    toTop.type = 'button';
+    toTop.className = 'fab-totop';
+    toTop.setAttribute('aria-label', 'Наверх');
+    toTop.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+      '<path d="M6 14l6-6 6 6" stroke="currentColor" stroke-width="2.2" ' +
+      'stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    document.body.appendChild(toTop);
+  })();
+
   /* ---------- Мобильное меню (бургер) ---------- */
   var burger = document.querySelector('.burger');
   var nav = document.querySelector('.nav');

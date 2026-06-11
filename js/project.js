@@ -96,17 +96,6 @@
     });
   }
 
-  /* --- Кнопка «Скачать презентацию» в шапке --- */
-  var presentationBtn = document.getElementById('presentationBtn');
-  if (presentationBtn) {
-    if (h.presentationUrl) {
-      presentationBtn.setAttribute('href', h.presentationUrl);
-      presentationBtn.style.display = '';
-    } else {
-      presentationBtn.style.display = 'none';
-    }
-  }
-
   /* --- Кнопка «Презентация»: скачивание файла либо форма заявки --- */
   var presentBtn = document.getElementById('presentBtn');
   if (presentBtn && h.presentationUrl) {

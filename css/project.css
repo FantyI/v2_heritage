@@ -224,8 +224,9 @@
   text-align: right
 }
 
+/* Кнопки «Заказать звонок» / «Презентация» скрыты — заявка идёт через форму ниже */
 .buy-card__actions {
-  display: grid;
+  display: none;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-top: 26px
@@ -630,6 +631,57 @@
   padding: 30px 20px;
   border: 1px solid var(--orange);
   border-radius: 30px;
+  min-width: 0; /* колонки могут сжиматься, текст переносится, без overflow */
+}
+
+/* На узких десктопах (901–1100px) левая колонка макета зажата липкой карточкой —
+   две колонки контуров не помещаются, поэтому ставим их друг под друга
+   и сворачиваем содержимое под кнопку «Ещё» — как на мобилке. */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .complectation__cols {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .complectation__groups {
+    position: relative;
+    max-height: 364px;
+    overflow: hidden;
+    transition: max-height 0.45s ease;
+  }
+
+  .complectation__groups::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 90px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0), #fff);
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .complectation__col.is-expanded .complectation__groups {
+    max-height: 6000px; /* с запасом под самый длинный контур, чтобы не обрезалось */
+  }
+
+  .complectation__col.is-expanded .complectation__groups::after {
+    opacity: 0;
+  }
+
+  /* повышенная специфичность — перекрыть базовое .complectation__more{display:none},
+     которое идёт ниже по файлу */
+  .complectation__col .complectation__more {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 16px;
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 }
 
 .complectation__col-title {
@@ -717,7 +769,11 @@
 .project-link__title {
   font-size: 20px;
   font-weight: 700;
-  color: var(--navy)
+  color: var(--navy);
+  padding-right: 58px; /* резерв под стрелку в правом верхнем углу */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto
 }
 
 .project-link__text {
@@ -816,15 +872,38 @@
   background: var(--orange)
 }
 
-/* ---------- Ссылка «Назад» (только мобильная) ---------- */
+/* ---------- Ссылка «Назад» ---------- */
 .back-link {
-  display: none
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--orange);
+  font-weight: 600;
+  font-size: 16px;
+  margin: 18px 0 6px;
+  transition: color 0.18s ease;
+}
+
+.back-link:hover {
+  color: var(--navy);
+}
+
+.back-link img,
+.back-link svg {
+  width: 18px;
+  height: 18px;
 }
 
 /* ---------- Бейдж типа дома у названия / кнопка «Ещё» — только мобильные ---------- */
 .buy-card__type,
 .complectation__more {
   display: none
+}
+
+/* На странице товара плавающую кнопку опроса опускаем ниже (ПК;
+   на мобайле её заменяет нижняя панель, привязанная к низу экрана) */
+.quiz-fab {
+  top: 90%;
 }
 
 /* =====================================================================
@@ -1112,7 +1191,7 @@
   }
 
   .complectation__col.is-expanded .complectation__groups {
-    max-height: 3000px
+    max-height: 6000px
   }
 
   .complectation__col.is-expanded .complectation__groups::after {
@@ -1336,6 +1415,27 @@
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 15px
+  }
+}
+
+/* Карточки-ссылки на узких 3 колонках (901–1100): ужимаем отступы, стрелку
+   и заголовок, чтобы текст не наезжал на стрелку и не вылезал за карточку.
+   Размещено после базовых правил и типографики — иначе перебьётся порядком. */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .project-link {
+    padding: 22px;
+  }
+
+  .project-link__title {
+    font-size: 17px;
+    padding-right: 54px;
+  }
+
+  .project-link__arrow {
+    top: 18px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
   }
 }
 

@@ -15,8 +15,8 @@
       rel="stylesheet"
     />
     <link rel="icon" href="img/ui/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="css/styles.css?v=80" />
-    <link rel="stylesheet" href="css/project.css?v=40" />
+    <link rel="stylesheet" href="css/styles.css?v=84" />
+    <link rel="stylesheet" href="css/project.css?v=46" />
     <script>
       /* Режим «как на 1920, но в масштабе»: для ширин 1301–1919px страница
          показывается ровно как на 1920px и пропорционально ужимается (zoom),
@@ -84,9 +84,15 @@
           /></a>
         </div>
         <a href="tel:+74952560054" class="header__phone">+7 (495) 256-00-54</a>
-        <a id="presentationBtn" class="btn-outline" href="#" download style="display:none">
-          Скачать презентацию<img src="img/icons/download.svg" alt="" />
-        </a>
+        <button
+          class="btn-outline"
+          data-modal-open
+          data-modal-title="Скачать каталог в PDF"
+          data-modal-text="Оставьте контакты — пришлём каталог проектов в PDF."
+          data-modal-nocomment
+        >
+          Скачать каталог в PDF<img src="img/icons/download.svg" alt="" />
+        </button>
       </div>
     </header>
 
@@ -673,6 +679,6 @@
 
     <script src="js/houses-data.js?v=8"></script>
     <script src="js/main.js?v=25"></script>
-    <script src="js/project.js?v=14"></script>
+    <script src="js/project.js?v=15"></script>
   </body>
 </html>
